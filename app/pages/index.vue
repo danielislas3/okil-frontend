@@ -60,12 +60,12 @@ const consoleMessages = ref([])
 const isDarkMode = ref(false)
 
 const messages = [
-  '> Conectando al servidor de café...',
-  '> HTTP 418: ¡Soy una tetera! Es broma, aquí todo es sobre café.',
-  '> Inicializando perfiles de sabor...',
-  '> Cargando granos de café... ¡100% arábica confirmada!',
-  '> Optimizando la temperatura de extracción...',
-  '> HTTP 418: Todavía no soy una tetera. ¡Tomamos nuestro café en serio!'
+  '> Estableciendo conexión con el servidor de café...',
+  '> HTTP 418: ¡Soy una tetera! Es broma, aquí solo servimos buen café.',
+  '> Configurando perfiles de sabor personalizados...',
+  '> Seleccionando los mejores granos... ¡100% arábica garantizada!',
+  '> Ajustando la temperatura óptima de extracción...',
+  '> HTTP 418: No soy una tetera, pero sí tomamos el café muy en serio.'
 ]
 onMounted(() => {
   let index = 0
