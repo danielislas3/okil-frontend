@@ -5,5 +5,8 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4
   },
-  modules: ['@nuxtjs/tailwindcss']
+  modules: ['@nuxtjs/tailwindcss'],
+  plugins: [
+    { src: '~/plugins/Vue3Lottie.client.ts', mode: 'client' }
+  ]
 })
