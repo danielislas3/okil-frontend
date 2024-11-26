@@ -67,6 +67,17 @@ const messages = [
   '> Optimizando la temperatura de extracción...',
   '> HTTP 418: Todavía no soy una tetera. ¡Tomamos nuestro café en serio!'
 ]
+onMounted(() => {
+  let index = 0
+  const interval = setInterval(() => {
+    if (index < messages.length) {
+      consoleMessages.value.push(messages[index])
+      index++
+    } else {
+      clearInterval(interval)
+    }
+  }, 2000)
+})
 
 const handleSubmit = () => {
   // Simula el envío del formulario con Netlify
