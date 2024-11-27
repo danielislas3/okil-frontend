@@ -33,21 +33,23 @@
           </pre>
         </div>
 
-        <form name="email-subscription" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mb-8">
-          <input type="hidden" name="form-name" value="email-subscription" />
-          <div style="display:none;">
-            <label>Don't fill this out: <input name="bot-field" /></label>
-          </div>
+        <form name="email-subscription" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mb-8"
+  @submit.prevent="handleSubmit">
+  <input type="hidden" name="form-name" value="email-subscription" />
+  <div style="display:none;">
+    <label>Don't fill this out: <input name="bot-field" /></label>
+  </div>
 
-          <div class="flex flex-col sm:flex-row gap-4">
-            <input v-model="email" type="email" name="email" placeholder="Tu correo electrónico" required :class="['flex-grow px-4 py-3 rounded-md border focus:outline-none focus:ring-2',
-              'bg-primary-bg text-primary-text border-secondary-text focus:ring-accent']" />
-            <button type="submit"
-              class="px-6 py-3 rounded-md transition duration-300 font-semibold shadow-md bg-accent text-white hover:opacity-90">
-              Descubre Nuestro Café
-            </button>
-          </div>
-        </form>
+  <div class="flex flex-col sm:flex-row gap-4">
+    <input v-model="email" type="email" name="email" placeholder="Escribe tu correo, el resto lo hace el café ☕🎩" required :class="['flex-grow px-4 py-3 rounded-md border focus:outline-none focus:ring-2',
+      'bg-primary-bg text-primary-text border-secondary-text focus:ring-accent']" />
+    <button type="submit"
+      class="px-6 py-3 rounded-md transition duration-300 font-semibold shadow-md bg-accent text-white hover:opacity-90">
+      Descubre Nuestro Café
+    </button>
+  </div>
+</form>
+
 
 
         <p class="mt-8 text-sm text-secondary-text">
@@ -156,12 +158,36 @@ const handleSubmit = async (e) => {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(new FormData(e.target)).toString()
     })
-    alert('¡Gracias por suscribirte! Te enviaremos actualizaciones más rápido que un espresso doble.')
+    showCustomMessage(
+      '¡Gracias por suscribirte!',
+      'Pronto recibirás nuestras actualizaciones. Tu taza de café está casi lista...'
+    )
     email.value = ''
   } catch (error) {
-    alert('Oops, parece que nuestra máquina de café se quedó sin agua. ¡Inténtalo de nuevo!')
+    showCustomMessage(
+      'Oops, algo salió mal...',
+      'Parece que nuestro barista digital tuvo un problema. ¡Inténtalo nuevamente más tarde!',
+      true
+    )
   }
 }
+
+const showCustomMessage = (title, message, isError = false) => {
+  const messageContainer = document.createElement('div')
+  messageContainer.className = `fixed bottom-4 left-1/2 transform -translate-x-1/2 p-4 rounded-md shadow-md ${
+    isError ? 'bg-red-500 text-white' : 'bg-green-500 text-white'
+  }`
+  messageContainer.innerHTML = `
+    <strong class="block text-lg">${title}</strong>
+    <p class="text-sm">${message}</p>
+  `
+  document.body.appendChild(messageContainer)
+  setTimeout(() => {
+    messageContainer.classList.add('opacity-0')
+    setTimeout(() => messageContainer.remove(), 300)
+  }, 5000)
+}
+
 </script>
 
 <style>
