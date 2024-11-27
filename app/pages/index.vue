@@ -24,7 +24,7 @@
         </p>
 
         <Vue3Lottie :animationLink="lottieAnimationUrl" background="transparent" :speed="1" loop autoplay :height="300"
-          :width="300"></Vue3Lottie>
+          :width="300" aria-label="Animación ilustrativa del café en Okil"></Vue3Lottie>
 
         <div
           class="bg-secondary-bg text-secondary-text rounded-md p-4 mb-8 w-full max-w-full overflow-auto shadow-inner">
@@ -51,15 +51,52 @@
       </div>
     </main>
 
-    <!-- Footer -->
     <footer class="p-4 text-center text-sm bg-footer-bg text-secondary-text">
       <p>&copy; {{ new Date().getFullYear() }} Okil café de especialidad. Todos los derechos reservados.</p>
       <p class="mt-2 italic">El exceso de café puede resultar en ideas brillantes a las 3 AM.</p>
+
+      <!-- Información de contacto -->
+      <div class="mt-4">
+        <p class="mb-2">Contáctanos: <a href="mailto:contacto@gmail.com"
+            class="text-accent hover:underline">contacto@gmail.com</a></p>
+        <div class="flex justify-center gap-4">
+          Redes sociales
+          <!-- <a href="https://instagram.com/okil.cafe" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="https://cdn.icon-icons.com/icons2/836/PNG/512/Instagram_icon-icons.com_66804.png" alt="Instagram" class="w-6 h-6">
+      </a> -->
+        </div>
+      </div>
     </footer>
   </div>
 </template>
 
 <script setup>
+
+useHead({
+  title: 'Okil - café de especialidad',
+  meta: [
+    {
+      name: 'description',
+      content: 'Okil es el lugar donde inicia tu viaje en el café de especialidad. Aprende, disfruta y explora el mejor café con nosotros.'
+    },
+    {
+      name: 'keywords',  content: 'café de especialidad, café artesanal, okil, baristas, tostado artesanal, café mexicano, café orgánico, cafetería en Tecámac, brewing, métodos pour-over, café de calidad, cultura del café, mejor café en Tecámac, café fresco, café de origen'
+    },
+    { property: 'og:title', content: 'Okil - Un nuevo comienzo en el café' },
+    { property: 'og:description', content: 'Estamos preparando el mejor café y también nuestra página web.' },
+    { property: 'og:image', content: '/path-to-image.jpg' },
+    // { property: 'og:url', content: 'https://okilcafe.mx' },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'Okil - Un nuevo comienzo en el café' },
+    { name: 'twitter:description', content: 'Okil es tu puerta de entrada al café de especialidad.' },
+    // { name: 'twitter:image', content: '/path-to-image.jpg' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://okilcafe.mx' },
+    { rel: 'icon', href: '/favicon.ico' }
+  ]
+})
 
 const email = ref('')
 const isDarkMode = ref(false)

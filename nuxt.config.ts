@@ -5,10 +5,14 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4
   },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxtjs/sitemap'],
   plugins: [
     { src: '~/plugins/Vue3Lottie.client.ts', mode: 'client' }
   ],
+  site: {
+    url: 'https://okilcafe.mx', 
+    name: 'My Awesome Website' 
+    }, 
   fonts: {
     providers: {
       custom: '~/providers/custom',
