@@ -33,8 +33,12 @@
           </pre>
         </div>
 
-        <form name="email-subscription" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mb-8"
-          @submit.prevent="handleSubmit">
+        <form name="email-subscription" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mb-8">
+          <input type="hidden" name="form-name" value="email-subscription" />
+          <div style="display:none;">
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </div>
+
           <div class="flex flex-col sm:flex-row gap-4">
             <input v-model="email" type="email" name="email" placeholder="Tu correo electrónico" required :class="['flex-grow px-4 py-3 rounded-md border focus:outline-none focus:ring-2',
               'bg-primary-bg text-primary-text border-secondary-text focus:ring-accent']" />
@@ -44,6 +48,7 @@
             </button>
           </div>
         </form>
+
 
         <p class="mt-8 text-sm text-secondary-text">
           Nuestro espresso ya está listo, nuestra web casi lista.
@@ -80,7 +85,7 @@ useHead({
       content: 'Okil es el lugar donde inicia tu viaje en el café de especialidad. Aprende, disfruta y explora el mejor café con nosotros.'
     },
     {
-      name: 'keywords',  content: 'café de especialidad, café artesanal, okil, baristas, tostado artesanal, café mexicano, café orgánico, cafetería en Tecámac, brewing, métodos pour-over, café de calidad, cultura del café, mejor café en Tecámac, café fresco, café de origen'
+      name: 'keywords', content: 'café de especialidad, café artesanal, okil, baristas, tostado artesanal, café mexicano, café orgánico, cafetería en Tecámac, brewing, métodos pour-over, café de calidad, cultura del café, mejor café en Tecámac, café fresco, café de origen'
     },
     { property: 'og:title', content: 'Okil - Un nuevo comienzo en el café' },
     { property: 'og:description', content: 'Estamos preparando el mejor café y también nuestra página web.' },
