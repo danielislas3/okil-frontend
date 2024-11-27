@@ -24,7 +24,7 @@
         </p>
 
         <Vue3Lottie :animationLink="lottieAnimationUrl" background="transparent" :speed="1" loop autoplay :height="300"
-          :width="300"></Vue3Lottie>
+          :width="300" aria-label="Animación ilustrativa del café en Okil"></Vue3Lottie>
 
         <div
           class="bg-secondary-bg text-secondary-text rounded-md p-4 mb-8 w-full max-w-full overflow-auto shadow-inner">
@@ -60,6 +60,32 @@
 </template>
 
 <script setup>
+
+useHead({
+  title: 'Okil - café de especialidad',
+  meta: [
+    {
+      name: 'description',
+      content: 'Okil es el lugar donde inicia tu viaje en el café de especialidad. Aprende, disfruta y explora el mejor café con nosotros.'
+    },
+    {
+      name: 'keywords', content: 'café de especialidad, café artesanal, okil, baristas, especialidad, tostado artesanal, café de calidad, métodos de preparación, café arábica, espresso perfecto, brewing, arte latte, barista training, café mexicano, café orgánico, molienda de café, cafetería de especialidad, café premium, café gourmet, tueste de café, pasión por el café, cultura del café, coffee lovers, métodos pour-over, aeropress, chemex, v60, café ecológico, café ético, origen único, café de origen, café fresco, cafetería en Tecámac, mejor café en Tecámac, café en Tecámac, cafeterías cerca de mí, cafeterías en Tecámac, café artesanal en Tecámac, café orgánico en Tecámac, café de calidad en Tecámac'
+    },
+    { property: 'og:title', content: 'Okil - Un nuevo comienzo en el café' },
+    { property: 'og:description', content: 'Estamos preparando el mejor café y también nuestra página web.' },
+    { property: 'og:image', content: '/path-to-image.jpg' },
+    // { property: 'og:url', content: 'https://okilcafe.mx' },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'Okil - Un nuevo comienzo en el café' },
+    { name: 'twitter:description', content: 'Okil es tu puerta de entrada al café de especialidad.' },
+    // { name: 'twitter:image', content: '/path-to-image.jpg' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://okilcafe.mx' },
+    { rel: 'icon', href: '/favicon.ico' }
+  ]
+})
 
 const email = ref('')
 const isDarkMode = ref(false)
