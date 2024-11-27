@@ -57,7 +57,7 @@
 
       <!-- Información de contacto -->
       <div class="mt-4">
-        <p class="mb-2">Contáctanos: <a href="mailto:okilcaffe@okilcafe.mx"
+        <p class="mb-2">Contáctanos: <a href="mailto:contacto@gmail.com"
             class="text-accent hover:underline">contacto@gmail.com</a></p>
         <div class="flex justify-center gap-4">
           Redes sociales
@@ -80,7 +80,7 @@ useHead({
       content: 'Okil es el lugar donde inicia tu viaje en el café de especialidad. Aprende, disfruta y explora el mejor café con nosotros.'
     },
     {
-      name: 'keywords', content: 'café de especialidad, café artesanal, okil, baristas, especialidad, tostado artesanal, café de calidad, métodos de preparación, café arábica, espresso perfecto, brewing, arte latte, barista training, café mexicano, café orgánico, molienda de café, cafetería de especialidad, café premium, café gourmet, tueste de café, pasión por el café, cultura del café, coffee lovers, métodos pour-over, aeropress, chemex, v60, café ecológico, café ético, origen único, café de origen, café fresco, cafetería en Tecámac, mejor café en Tecámac, café en Tecámac, cafeterías cerca de mí, cafeterías en Tecámac, café artesanal en Tecámac, café orgánico en Tecámac, café de calidad en Tecámac'
+      name: 'keywords',  content: 'café de especialidad, café artesanal, okil, baristas, tostado artesanal, café mexicano, café orgánico, cafetería en Tecámac, brewing, métodos pour-over, café de calidad, cultura del café, mejor café en Tecámac, café fresco, café de origen'
     },
     { property: 'og:title', content: 'Okil - Un nuevo comienzo en el café' },
     { property: 'og:description', content: 'Estamos preparando el mejor café y también nuestra página web.' },
