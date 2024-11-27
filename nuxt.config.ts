@@ -6,6 +6,12 @@ export default defineNuxtConfig({
     compatibilityVersion: 4
   },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxtjs/sitemap'],
+  nitro: {
+    prerender: {
+      routes: ["/"],
+
+    },
+  },
   plugins: [
     { src: '~/plugins/Vue3Lottie.client.ts', mode: 'client' }
   ],
