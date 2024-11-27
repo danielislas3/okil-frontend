@@ -1,158 +1,199 @@
 <template>
-  <div
-    :class="['min-h-screen flex flex-col transition-colors duration-300', isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-beige text-gray-900']">
-    <header class="p-4 bg-coffee-brown text-cream flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Okil Coffee</h1>
-      <button @click="toggleDarkMode" class="p-2 rounded-full hover:bg-dark-brown transition-colors duration-300">
+  <div :class="['min-h-screen flex flex-col transition-colors duration-300',
+    isDarkMode ? 'bg-primary-bg text-primary-text' : 'bg-primary-bg text-primary-text']">
+
+    <header class="p-4 bg-header-bg text-primary-text flex justify-between items-center shadow-md">
+      <h1 class="text-2xl sm:text-3xl font-bold title">Okil</h1>
+      <!-- <button @click="toggleDarkMode" class="p-2 rounded-full hover:bg-opacity-75 transition">
         <span v-if="isDarkMode">🌞</span>
         <span v-else>🌙</span>
-      </button>
+      </button> -->
     </header>
 
-    <main class="flex-grow flex flex-col items-center justify-center p-4 text-center">
-      <div class="max-w-2xl mx-auto">
-        <h2 class="text-4xl font-bold mb-4" :class="isDarkMode ? 'text-cream' : 'text-dark-brown'">Un nuevo comienzo en
-          el café</h2>
-        <p class="text-xl mb-8" :class="isDarkMode ? 'text-gray-300' : 'text-coffee-brown'">Estamos preparando el mejor
-          café y también nuestra página web.</p>
 
-        <div class="mb-8 w-64 h-64 mx-auto">
-          <Vue3Lottie animationLink="https://lottie.host/8b07b028-d876-4b79-ad17-128f5f19ff5a/tDNbgz5tWU.json"
-            background="transparent" :speed="1" loop autoplay></Vue3Lottie>
+    <main class="flex-grow flex flex-col items-center justify-center p-6 text-center">
+      <div class="w-full max-w-2xl mx-auto">
+
+        <h2 class="text-3xl sm:text-5xl font-extrabold mb-6 text-hero-text">
+          Un nuevo comienzo en el café
+        </h2>
+        <p class="text-lg sm:text-xl mb-8 text-secondary-text">
+          Estamos preparando el mejor café y también nuestra página web.
+          <br>
+          <span class="text-sm italic">*Advertencia: Puede causar niveles de energía inusualmente altos.</span>
+        </p>
+
+        <Vue3Lottie :animationLink="lottieAnimationUrl" background="transparent" :speed="1" loop autoplay :height="300"
+          :width="300"></Vue3Lottie>
+
+        <div
+          class="bg-secondary-bg text-secondary-text rounded-md p-4 mb-8 w-full max-w-full overflow-auto shadow-inner">
+          <pre class="text-left text-xs sm:text-sm font-mono leading-snug">
+        <span v-html="animatedMessage"></span>
+          </pre>
         </div>
 
-        <form @submit.prevent="handleSubmit" netlify name="email-subscription" class="mb-8">
-          <input type="hidden" name="form-name" value="email-subscription" />
-          <div class="flex flex-col sm:flex-row gap-2">
-            <input v-model="email" type="email" name="email" placeholder="Tu correo electrónico" required
-              :class="['flex-grow px-4 py-2 rounded-md border focus:outline-none focus:ring-2',
-                isDarkMode ? 'bg-gray-800 text-gray-100 border-gray-600 focus:ring-gray-500' : 'bg-white text-gray-900 border-coffee-brown focus:ring-dark-brown']" />
-            <button type="submit" :class="['px-6 py-2 rounded-md transition duration-300',
-              isDarkMode ? 'bg-cream text-dark-brown hover:bg-gray-300' : 'bg-coffee-brown text-cream hover:bg-dark-brown']">
+        <form name="email-subscription" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mb-8"
+          @submit.prevent="handleSubmit">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <input v-model="email" type="email" name="email" placeholder="Tu correo electrónico" required :class="['flex-grow px-4 py-3 rounded-md border focus:outline-none focus:ring-2',
+              'bg-primary-bg text-primary-text border-secondary-text focus:ring-accent']" />
+            <button type="submit"
+              class="px-6 py-3 rounded-md transition duration-300 font-semibold shadow-md bg-accent text-white hover:opacity-90">
               Descubre Nuestro Café
             </button>
           </div>
         </form>
 
-        <div
-          :class="['p-4 rounded-md text-left font-mono text-sm mb-8 overflow-hidden', isDarkMode ? 'bg-gray-800' : 'bg-dark-brown text-cream']">
-          <p v-for="(message, index) in consoleMessages" :key="index" class="typing-animation">
-            {{ message }}
-          </p>
-        </div>
-
-        <p :class="isDarkMode ? 'text-gray-300' : 'text-coffee-brown'">Nuestro espresso ya está listo, nuestra web casi
-          lista.</p>
+        <p class="mt-8 text-sm text-secondary-text">
+          Nuestro espresso ya está listo, nuestra web casi lista.
+        </p>
       </div>
     </main>
 
-    <footer :class="['p-4 text-center', isDarkMode ? 'bg-gray-800 text-gray-300' : 'bg-dark-brown text-cream']">
-      <p>&copy; {{ new Date().getFullYear() }} Okil Coffee. Todos los derechos reservados.</p>
+    <!-- Footer -->
+    <footer class="p-4 text-center text-sm bg-footer-bg text-secondary-text">
+      <p>&copy; {{ new Date().getFullYear() }} Okil café de especialidad. Todos los derechos reservados.</p>
+      <p class="mt-2 italic">El exceso de café puede resultar en ideas brillantes a las 3 AM.</p>
     </footer>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
 
 const email = ref('')
-const consoleMessages = ref([])
 const isDarkMode = ref(false)
+const lottieAnimationUrl = "https://lottie.host/b797d241-f4f9-41e0-b899-7d6654ed2d5d/V2ooR5SIRG.json"
 
 const messages = [
-  '> Conectando al servidor de café...',
-  '> HTTP 418: ¡Soy una tetera! Es broma, aquí todo es sobre café.',
-  '> Inicializando perfiles de sabor...',
-  '> Cargando granos de café... ¡100% arábica confirmada!',
-  '> Optimizando la temperatura de extracción...',
-  '> HTTP 418: Todavía no soy una tetera. ¡Tomamos nuestro café en serio!'
+  '> Estableciendo conexión con el servidor de café...',
+  '> HTTP 418: ¡Soy una cafetera! Espera, ¿no era una tetera?',
+  '> Configurando perfiles de sabor personalizados...',
+  '> Seleccionando los mejores granos... ¡100% arábica garantizada!',
+  '> Ajustando la temperatura óptima de extracción...',
+  '> ¡Listo! Tu experiencia cafetera está en proceso...'
 ]
 
-const handleSubmit = () => {
-  // Simula el envío del formulario con Netlify
-  alert('¡Gracias por suscribirte! Pronto recibirás noticias sobre nosotros.')
-  email.value = ''
+const animatedMessage = ref('')
+let messageIndex = 0
+
+onMounted(() => {
+  showNextMessage()
+})
+
+const showNextMessage = () => {
+  if (messageIndex < messages.length) {
+    typeMessage(messages[messageIndex], 0, () => {
+      messageIndex++
+      setTimeout(showNextMessage, 1000)
+    })
+  }
+}
+
+const typeMessage = (message, charIndex, callback) => {
+  if (charIndex < message.length) {
+    animatedMessage.value += message.charAt(charIndex)
+    setTimeout(() => {
+      typeMessage(message, charIndex + 1, callback)
+    }, 50)
+  } else {
+    animatedMessage.value += '\n'
+    callback()
+  }
 }
 
 const toggleDarkMode = () => {
   isDarkMode.value = !isDarkMode.value
 }
 
-
+const handleSubmit = async (e) => {
+  e.preventDefault()
+  try {
+    await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(e.target)).toString()
+    })
+    alert('¡Gracias por suscribirte! Te enviaremos actualizaciones más rápido que un espresso doble.')
+    email.value = ''
+  } catch (error) {
+    alert('Oops, parece que nuestra máquina de café se quedó sin agua. ¡Inténtalo de nuevo!')
+  }
+}
 </script>
 
-<style scoped>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 body {
   font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.title {
+  font-family: 'Adver Gothic Regular', sans-serif;
 }
 
 :root {
-  --color-beige: #F5E6D3;
-  --color-cream: #FFF8E7;
-  --color-coffee-brown: #6F4E37;
-  --color-dark-brown: #3A2618;
+  /* Paleta de colores con nombres semánticos */
+  --primary-bg: #fdfbf8;
+  /* Fondo principal */
+  --secondary-bg: #efece9;
+  /* Fondo secundario */
+  --primary-text: #3e3e3e;
+  /* Texto principal */
+  --secondary-text: #6e6e6e;
+  /* Texto secundario */
+  --accent: #3c2806;
+  /* Color de acento para botones o elementos clave */
+  --header-bg: #A36F4E;
+  /* Fondo del header principal */
+  --hero-text: #3e3e3e;
+  /* Texto del hero */
+  --footer-bg: #f5f2e7;
+  /* Fondo del footer */
 }
 
-.bg-beige {
-  background-color: var(--color-beige);
+.bg-primary-bg {
+  background-color: var(--primary-bg);
 }
 
-.bg-cream {
-  background-color: var(--color-cream);
+.bg-secondary-bg {
+  background-color: var(--secondary-bg);
 }
 
-.bg-coffee-brown {
-  background-color: var(--color-coffee-brown);
+.bg-header-bg {
+  background-color: var(--header-bg);
 }
 
-.bg-dark-brown {
-  background-color: var(--color-dark-brown);
+.bg-footer-bg {
+  background-color: var(--footer-bg);
 }
 
-.text-cream {
-  color: var(--color-cream);
+.text-primary-text {
+  color: var(--primary-text);
 }
 
-.text-coffee-brown {
-  color: var(--color-coffee-brown);
+.text-secondary-text {
+  color: var(--secondary-text);
 }
 
-.text-dark-brown {
-  color: var(--color-dark-brown);
+.text-hero-text {
+  color: var(--hero-text);
 }
 
-.typing-animation {
-  overflow: hidden;
-  border-right: .15em solid currentColor;
-  white-space: nowrap;
-  margin: 0 auto;
-  letter-spacing: .15em;
-  animation:
-    typing 3.5s steps(40, end),
-    blink-caret .75s step-end infinite;
+.bg-accent {
+  background-color: var(--accent);
 }
 
-@keyframes typing {
-  from {
-    width: 0
-  }
-
-  to {
-    width: 100%
-  }
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes blink-caret {
-
-  from,
-  to {
-    border-color: transparent
-  }
-
-  50% {
-    border-color: currentColor;
-  }
+button:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 </style>
