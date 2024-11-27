@@ -51,10 +51,21 @@
       </div>
     </main>
 
-    <!-- Footer -->
     <footer class="p-4 text-center text-sm bg-footer-bg text-secondary-text">
       <p>&copy; {{ new Date().getFullYear() }} Okil café de especialidad. Todos los derechos reservados.</p>
       <p class="mt-2 italic">El exceso de café puede resultar en ideas brillantes a las 3 AM.</p>
+
+      <!-- Información de contacto -->
+      <div class="mt-4">
+        <p class="mb-2">Contáctanos: <a href="mailto:okilcaffe@okilcafe.mx"
+            class="text-accent hover:underline">contacto@gmail.com</a></p>
+        <div class="flex justify-center gap-4">
+          Redes sociales
+          <!-- <a href="https://instagram.com/okil.cafe" target="_blank" rel="noopener" aria-label="Instagram">
+        <img src="https://cdn.icon-icons.com/icons2/836/PNG/512/Instagram_icon-icons.com_66804.png" alt="Instagram" class="w-6 h-6">
+      </a> -->
+        </div>
+      </div>
     </footer>
   </div>
 </template>
