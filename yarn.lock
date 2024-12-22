@@ -687,6 +687,15 @@
     "@nuxt/schema" "^3.13.2"
     execa "^7.2.0"
 
+"@nuxt/devtools-kit@^1.3.9":
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/@nuxt/devtools-kit/-/devtools-kit-1.6.4.tgz#23b678cfc0929c22c6544b2b69bff28b510925ce"
+  integrity sha512-jpLYrXFm8T74j8ZjU6lheghe3gdr7PcNluvh/KOl+t6l7AtsQilkTmCZ4YoaiaWLM+5c5mkc72qd7ECgZb0tCw==
+  dependencies:
+    "@nuxt/kit" "^3.14.1592"
+    "@nuxt/schema" "^3.14.1592"
+    execa "^7.2.0"
+
 "@nuxt/devtools-wizard@1.6.1":
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/@nuxt/devtools-wizard/-/devtools-wizard-1.6.1.tgz#f1cec3ad22d359751f4100f762c601b563c34a50"
@@ -772,7 +781,7 @@
     unplugin "^1.14.1"
     unstorage "^1.12.0"
 
-"@nuxt/kit@3.14.1592", "@nuxt/kit@^3.13.1", "@nuxt/kit@^3.13.2", "@nuxt/kit@^3.14.1592":
+"@nuxt/kit@3.14.1592", "@nuxt/kit@^3.12.3", "@nuxt/kit@^3.13.1", "@nuxt/kit@^3.13.2", "@nuxt/kit@^3.14.1592":
   version "3.14.1592"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.14.1592.tgz#f959a269424c1ee313585a46112e474b6ccab3bc"
   integrity sha512-r9r8bISBBisvfcNgNL3dSIQHSBe0v5YkX5zwNblIC2T0CIEgxEVoM5rq9O5wqgb5OEydsHTtT2hL57vdv6VT2w==
@@ -798,7 +807,7 @@
     unimport "^3.13.2"
     untyped "^1.5.1"
 
-"@nuxt/schema@3.14.1592", "@nuxt/schema@^3.13.2":
+"@nuxt/schema@3.14.1592", "@nuxt/schema@^3.13.2", "@nuxt/schema@^3.14.1592":
   version "3.14.1592"
   resolved "https://registry.yarnpkg.com/@nuxt/schema/-/schema-3.14.1592.tgz#38c5c0af51d0b95e011db6c332f578aac97c8c82"
   integrity sha512-A1d/08ueX8stTXNkvGqnr1eEXZgvKn+vj6s7jXhZNWApUSqMgItU4VK28vrrdpKbjIPwq2SwhnGOHUYvN9HwCQ==
@@ -1595,6 +1604,15 @@ anymatch@^3.1.3, anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
+aos@^2.3.4:
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/aos/-/aos-2.3.4.tgz#eb1c29f5c1806a197cf6323080747547edd3db8e"
+  integrity sha512-zh/ahtR2yME4I51z8IttIt4lC1Nw0ktsFtmeDzID1m9naJnWXhCoARaCgNOGXb5CLy3zm+wqmRAEgMYB5E2HUw==
+  dependencies:
+    classlist-polyfill "^1.0.3"
+    lodash.debounce "^4.0.6"
+    lodash.throttle "^4.0.1"
+
 "aproba@^1.0.3 || ^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-2.0.0.tgz#52520b8ae5b569215b354efc0caa3fe1e45a8adc"
@@ -1912,6 +1930,11 @@ citty@^0.1.5, citty@^0.1.6:
   integrity sha512-tskPPKEs8D2KPafUypv2gxwJP8h/OaJmC82QQGGDQcHvXX43xF2VDACcJVmZ0EuSxkpO9Kc4MlrA3q0+FG58AQ==
   dependencies:
     consola "^3.2.3"
+
+classlist-polyfill@^1.0.3:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/classlist-polyfill/-/classlist-polyfill-1.2.0.tgz#935bc2dfd9458a876b279617514638bcaa964a2e"
+  integrity sha512-GzIjNdcEtH4ieA2S8NmrSxv7DfEV5fmixQeyTmqmRmRJPGpRBaSnA2a0VrCjyT8iW8JjEdMbKzDotAJf+ajgaQ==
 
 clear@^0.1.0:
   version "0.1.0"
@@ -3494,6 +3517,11 @@ local-pkg@^0.5.0, local-pkg@^0.5.1:
     mlly "^1.7.3"
     pkg-types "^1.2.1"
 
+lodash.debounce@^4.0.6:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
+
 lodash.defaults@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/lodash.defaults/-/lodash.defaults-4.2.0.tgz#d09178716ffea4dde9e5fb7b37f6f0802274580c"
@@ -3513,6 +3541,11 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==
+
+lodash.throttle@^4.0.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+  integrity sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
@@ -3949,6 +3982,15 @@ nuxi@^3.15.0:
   version "3.15.0"
   resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-3.15.0.tgz#ed54923ca46727c6e7df10495143db340d9791c9"
   integrity sha512-ZVu45nuDrdb7nzKW2kLGY/N1vvFYLLbUVX6gUYw4BApKGGu4+GktTR5o48dGVgMYX9A8chaugl7TL9ZYmwC9Mg==
+
+nuxt-aos@1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/nuxt-aos/-/nuxt-aos-1.2.5.tgz#1686a03a02e8c976db50e97f5af5a01ee31be385"
+  integrity sha512-tNEXMOKijCg+SygLvjp2VbEy7yQcC6ertzI23bCa6DPlu134bfzSYUGOJRSFSKtYjnrqIW7MzLpqPTfTwd8A3Q==
+  dependencies:
+    "@nuxt/devtools-kit" "^1.3.9"
+    "@nuxt/kit" "^3.12.3"
+    aos "^2.3.4"
 
 nuxt-site-config-kit@3.0.4:
   version "3.0.4"
