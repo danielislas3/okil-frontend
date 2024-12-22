@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4
   },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxtjs/sitemap'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxtjs/sitemap', 'nuxt-aos'],
   nitro: {
     prerender: {
       routes: ["/"],
@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   ],
   site: {
     url: 'https://okilcafe.mx', 
-    name: 'My Awesome Website' 
+    name: 'Okil Café - Café de especialidad', 
     }, 
   fonts: {
     providers: {
