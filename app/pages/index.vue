@@ -148,7 +148,7 @@ const menuItems = [
     description: 'Suave y refrescante café cold brew',
     image: 'https://www.cocinadelirante.com/800x600/filters:format(webp):quality(75)/sites/default/files/images/2024/04/que-es-el-cold-brew.jpg?width=1600?height=200&width=200',
     tags: [translations.menu.categories.cold, translations.menu.categories.fresh],
-    price: '€4.50',
+    price: '$45.0',
     badge: 'Nuevo'
   },
   {
@@ -160,21 +160,21 @@ const menuItems = [
       translations.menu.categories.sweet,
       translations.menu.categories.spicy
     ],
-    price: '€5.00'
+    price: '$50.0'
   },
   {
     name: 'Honey Latte',
     description: 'Mezcla reconfortante con miel local',
     image: 'https://fancifuleats.com/wp-content/uploads/2023/03/salted-honey-oat-milk-latte-4.jpg?height=200&width=200',
     tags: [translations.menu.categories.hot, translations.menu.categories.healthy],
-    price: '€4.00'
+    price: '$40.0'
   },
   {
     name: 'Classic Cappuccino',
     description: 'Perfecto balance de espresso y leche',
     image: 'https://sumatocoffee.com/cdn/shop/articles/latte-art-what-is-it-and-how-did-it-start-264833.jpg?v=1713277725&width=1600?height=200&width=200',
     tags: [translations.menu.categories.hot, translations.menu.categories.classic],
-    price: '€3.50'
+    price: '$35.0'
   }
 ]
 
