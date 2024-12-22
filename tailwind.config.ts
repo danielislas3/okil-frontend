@@ -13,7 +13,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
-        display: ['Adver Gothic Regular', 'sans-serif'],
+        display: ['Bingo Dilan Regular', 'sans-serif'],
       },
     },
   },

@@ -24,7 +24,7 @@ export default defineNuxtConfig({
       custom: '~/providers/custom',
     },
     families: [
-      { name: 'Adver Gothic Regular', src: '/adver-gothic-regular.ttf' },
+      { name: 'Bingo Dilan Regular', src: '/BingoDilanRegular.ttf' },
     ]
   },
 })

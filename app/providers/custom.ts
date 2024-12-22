@@ -2,7 +2,7 @@ import { defineFontProvider } from 'unifont'
 
 const resolvableFonts = new Set<string>()
 export default defineFontProvider('custom', () => {
-  resolvableFonts.add('Adver Gothic Regular')
+  resolvableFonts.add('Bingo Dilan Regular')
   return {
     async resolveFont(fontFamily) {
       if (!resolvableFonts.has(fontFamily)) {
@@ -11,7 +11,7 @@ export default defineFontProvider('custom', () => {
       console.log(`Resolving font: ${fontFamily}`)
       return {
         fonts: [
-          { src: [{ url: '/adver-gothic-regular.ttf', format: 'ttf' }] },
+          { src: [{ url: '/BingoDilanRegular.ttf', format: 'ttf' }] },
         ],
       }
     },
