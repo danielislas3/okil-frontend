@@ -64,8 +64,8 @@
 
       <!-- Información de contacto -->
       <div class="mt-4">
-        <p class="mb-2">Contáctanos: <a href="mailto:contacto@gmail.com"
-            class="text-accent hover:underline">contacto@gmail.com</a></p>
+        <p class="mb-2">Contáctanos: <a href="mailto:okilcaffe@gmail.com"
+            class="text-accent hover:underline">okilcaffe@gmail.com</a></p>
         <div class="flex justify-center gap-4">
           Redes sociales
           <!-- <a href="https://instagram.com/okil.cafe" target="_blank" rel="noopener" aria-label="Instagram">
