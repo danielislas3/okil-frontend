@@ -1,267 +1,215 @@
 <template>
-  <div :class="['min-h-screen flex flex-col transition-colors duration-300',
-    isDarkMode ? 'bg-primary-bg text-primary-text' : 'bg-primary-bg text-primary-text']">
-
-    <header class="p-4 bg-header-bg text-primary-text flex justify-between items-center shadow-md">
-      <h1 class="text-2xl sm:text-3xl font-bold title">Okil</h1>
-      <!-- <button @click="toggleDarkMode" class="p-2 rounded-full hover:bg-opacity-75 transition">
-        <span v-if="isDarkMode">🌞</span>
-        <span v-else>🌙</span>
-      </button> -->
-    </header>
-
-
-    <main class="flex-grow flex flex-col items-center justify-center p-6 text-center">
-      <div class="w-full max-w-2xl mx-auto">
-
-        <h2 class="text-3xl sm:text-5xl font-extrabold mb-6 text-hero-text">
-          Un nuevo comienzo en el café
-        </h2>
-        <p class="text-lg sm:text-xl mb-8 text-secondary-text">
-          Estamos preparando el mejor café y también nuestra página web.
-          <br>
-          <span class="text-sm italic">*Advertencia: Puede causar niveles de energía inusualmente altos.</span>
-        </p>
-
-        <Vue3Lottie :animationLink="lottieAnimationUrl" background="transparent" :speed="1" loop autoplay :height="300"
-          :width="300" aria-label="Animación ilustrativa del café en Okil"></Vue3Lottie>
-
-        <div
-          class="bg-secondary-bg text-secondary-text rounded-md p-4 mb-8 w-full max-w-full overflow-auto shadow-inner">
-          <pre class="text-left text-xs sm:text-sm font-mono leading-snug">
-        <span v-html="animatedMessage"></span>
-          </pre>
+  <div class="bg-primary-bg min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 transition-all duration-300"
+      :class="{ 'shadow-md': scrolled }">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+          <h1 class="text-accent text-xl font-bold font-display">Okil</h1>
+          <div class="hidden md:flex gap-6">
+            <a v-for="(item, key) in translations.nav" :key="key" href="#"
+              class="text-secondary-text hover:text-accent transition-colors">
+              {{ item }}
+            </a>
+          </div>
+          <!-- Mobile menu button -->
+          <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-accent">
+            <Menu v-if="!mobileMenuOpen" class="w-6 h-6" />
+            <X v-else class="w-6 h-6" />
+          </button>
         </div>
-
-        <form name="email-subscription" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mb-8"
-  @submit.prevent="handleSubmit">
-  <input type="hidden" name="form-name" value="email-subscription" />
-  <div style="display:none;">
-    <label>Don't fill this out: <input name="bot-field" /></label>
-  </div>
-
-  <div class="flex flex-col sm:flex-row gap-4">
-    <input v-model="email" type="email" name="email" placeholder="Escribe tu correo, el resto lo hace el café ☕🎩" required :class="['flex-grow px-4 py-3 rounded-md border focus:outline-none focus:ring-2',
-      'bg-primary-bg text-primary-text border-secondary-text focus:ring-accent']" />
-    <button type="submit"
-      class="px-6 py-3 rounded-md transition duration-300 font-semibold shadow-md bg-accent text-white hover:opacity-90">
-      Descubre Nuestro Café
-    </button>
-  </div>
-</form>
-
-
-
-        <p class="mt-8 text-sm text-secondary-text">
-          Nuestro espresso ya está listo, nuestra web casi lista.
-        </p>
       </div>
-    </main>
 
-    <footer class="p-4 text-center text-sm bg-footer-bg text-secondary-text">
-      <p>&copy; {{ new Date().getFullYear() }} Okil café de especialidad. Todos los derechos reservados.</p>
-      <p class="mt-2 italic">El exceso de café puede resultar en ideas brillantes a las 3 AM.</p>
+      <!-- Mobile menu -->
+      <Transition enter-active-class="transition duration-300 ease-out"
+        enter-from-class="transform -translate-y-full opacity-0" enter-to-class="transform translate-y-0 opacity-100"
+        leave-active-class="transition duration-200 ease-in" leave-from-class="transform translate-y-0 opacity-100"
+        leave-to-class="transform -translate-y-full opacity-0">
+        <div v-if="mobileMenuOpen" class="md:hidden bg-white border-t">
+          <div class="px-4 py-2 space-y-1">
+            <a v-for="(item, key) in translations.nav" :key="key" href="#"
+              class="block py-2 text-secondary-text hover:text-accent transition-colors">
+              {{ item }}
+            </a>
+          </div>
+        </div>
+      </Transition>
+    </nav>
 
-      <!-- Información de contacto -->
-      <div class="mt-4">
-        <p class="mb-2">Contáctanos: <a href="mailto:okilcaffe@gmail.com"
-            class="text-accent hover:underline">okilcaffe@gmail.com</a></p>
-        <div class="flex justify-center gap-4">
-          Redes sociales
-          <!-- <a href="https://instagram.com/okil.cafe" target="_blank" rel="noopener" aria-label="Instagram">
-        <img src="https://cdn.icon-icons.com/icons2/836/PNG/512/Instagram_icon-icons.com_66804.png" alt="Instagram" class="w-6 h-6">
-      </a> -->
+    <!-- Hero Section -->
+    <section class="pt-24 max-w-7xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-bold text-hero-text leading-tight mb-6">
+            Bienvenido a Okil <br />
+            Un nuevo comienzo en el café
+          </h2>
+          <div class="bg-accent p-4 rounded-lg inline-block text-white font-semibold">
+            Descubre el mundo del café de especialidad con nosotros.
+          </div>
+        </div>
+        <div class="relative h-[400px] rounded-xl overflow-hidden">
+          <img src="/img/cofe.webp" alt="Taza de café artesanal" class="object-cover w-full h-full" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Preview -->
+    <section class="max-w-7xl mx-auto px-4 py-12">
+      <h3 class="text-2xl font-bold text-hero-text mb-8">Nuestro Menú</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <MenuCard v-for="item in menuItems" :key="item.name" v-bind="item" :orderButtonText="'Ordenar Ahora'"
+          @order="handleOrder(item)">
+          <template #badge v-if="item.badge">
+            <span class="px-2 py-1 bg-accent text-white rounded-full text-xs">
+              {{ item.badge }}
+            </span>
+          </template>
+        </MenuCard>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="max-w-7xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="text-2xl font-bold text-hero-text mb-6">Déjanos tu Opinión</h3>
+          <form name="email-subscription" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4" @submit.prevent="handleSubmit">
+            <input type="hidden" name="form-name" value="email-subscription" />
+            <div style="display:none;">
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </div>
+            <div>
+              <label class="block text-sm text-secondary-text mb-2">Tu Nombre</label>
+              <input type="text" v-model="review.name"
+                class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent" />
+            </div>
+            <div>
+              <label class="block text-sm text-secondary-text mb-2">Tu Correo</label>
+              <input type="email" v-model="review.email"
+                class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent" />
+            </div>
+            <div>
+              <label class="block text-sm text-secondary-text mb-2">Tu Opinión</label>
+              <textarea v-model="review.message" rows="4"
+                class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"></textarea>
+            </div>
+            <button type="submit"
+              class="px-6 py-2 bg-accent text-white rounded-lg hover:bg-opacity-90 transition-colors">
+              Enviar
+            </button>
+          </form>
+        </div>
+        <div class="space-y-4">
+          <ReviewCard v-for="review in reviews" :key="review.id" v-bind="review" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-footer-bg text-secondary-text mt-12 py-8">
+      <div class="max-w-7xl mx-auto px-4">
+        <h3 class="text-2xl font-bold mb-6">Contáctanos</h3>
+        <div class="space-y-2">
+          <p>Dirección: Calle del Café, Tecámac</p>
+          <p>Horario: Lunes a Viernes, 7:00 AM - 9:00 PM</p>
+          <p>Correo: <a href="mailto:okilcaffe@gmail.com" class="text-accent hover:underline">okilcaffe@gmail.com</a>
+          </p>
         </div>
       </div>
     </footer>
   </div>
 </template>
-
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import { Menu, X } from 'lucide-vue-next'
+import MenuCard from '@/components/MenuCard.vue'
+import ReviewCard from '@/components/ReviewCard.vue'
+import translations from '@/locales/es'
 
-useHead({
-  title: 'Okil - café de especialidad',
-  meta: [
-    {
-      name: 'description',
-      content: 'Okil es el lugar donde inicia tu viaje en el café de especialidad. Aprende, disfruta y explora el mejor café con nosotros.'
-    },
-    {
-      name: 'keywords', content: 'café de especialidad, café artesanal, okil, baristas, tostado artesanal, café mexicano, café orgánico, cafetería en Tecámac, brewing, métodos pour-over, café de calidad, cultura del café, mejor café en Tecámac, café fresco, café de origen'
-    },
-    { property: 'og:title', content: 'Okil - Un nuevo comienzo en el café' },
-    { property: 'og:description', content: 'Estamos preparando el mejor café y también nuestra página web.' },
-    { property: 'og:image', content: '/path-to-image.jpg' },
-    // { property: 'og:url', content: 'https://okilcafe.mx' },
-    { property: 'og:type', content: 'website' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: 'Okil - Un nuevo comienzo en el café' },
-    { name: 'twitter:description', content: 'Okil es tu puerta de entrada al café de especialidad.' },
-    // { name: 'twitter:image', content: '/path-to-image.jpg' }
-  ],
-  link: [
-    { rel: 'canonical', href: 'https://okilcafe.mx' },
-    { rel: 'icon', href: '/favicon.ico' }
-  ]
-})
+const mobileMenuOpen = ref(false)
+const scrolled = ref(false)
 
-const email = ref('')
-const isDarkMode = ref(false)
-const lottieAnimationUrl = "https://lottie.host/b797d241-f4f9-41e0-b899-7d6654ed2d5d/V2ooR5SIRG.json"
-
-const messages = [
-  '> Estableciendo conexión con el servidor de café...',
-  '> HTTP 418: ¡Soy una cafetera! Espera, ¿no era una tetera?',
-  '> Configurando perfiles de sabor personalizados...',
-  '> Seleccionando los mejores granos... ¡100% arábica garantizada!',
-  '> Ajustando la temperatura óptima de extracción...',
-  '> ¡Listo! Tu experiencia cafetera está en proceso...'
-]
-
-const animatedMessage = ref('')
-let messageIndex = 0
+const updateScroll = () => {
+  scrolled.value = window.scrollY > 0
+}
 
 onMounted(() => {
-  showNextMessage()
+  window.addEventListener('scroll', updateScroll)
 })
 
-const showNextMessage = () => {
-  if (messageIndex < messages.length) {
-    typeMessage(messages[messageIndex], 0, () => {
-      messageIndex++
-      setTimeout(showNextMessage, 1000)
-    })
+onUnmounted(() => {
+  window.removeEventListener('scroll', updateScroll)
+})
+
+const menuItems = [
+  {
+    name: 'Cold Brew Bean Family',
+    description: 'Suave y refrescante café cold brew',
+    image: 'https://www.cocinadelirante.com/800x600/filters:format(webp):quality(75)/sites/default/files/images/2024/04/que-es-el-cold-brew.jpg?width=1600?height=200&width=200',
+    tags: [translations.menu.categories.cold, translations.menu.categories.fresh],
+    price: '€4.50',
+    badge: 'Nuevo'
+  },
+  {
+    name: 'Pumpkin Spice Latte',
+    description: 'Favorito de otoño con calabaza real',
+    image: 'https://www.savoryspiceshop.com/cdn/shop/files/PumpkinSpiceLatte_1050x700.jpg?v=1693930539?&width=1600?height=200&width=200',
+    tags: [
+      translations.menu.categories.hot,
+      translations.menu.categories.sweet,
+      translations.menu.categories.spicy
+    ],
+    price: '€5.00'
+  },
+  {
+    name: 'Honey Latte',
+    description: 'Mezcla reconfortante con miel local',
+    image: 'https://fancifuleats.com/wp-content/uploads/2023/03/salted-honey-oat-milk-latte-4.jpg?height=200&width=200',
+    tags: [translations.menu.categories.hot, translations.menu.categories.healthy],
+    price: '€4.00'
+  },
+  {
+    name: 'Classic Cappuccino',
+    description: 'Perfecto balance de espresso y leche',
+    image: 'https://sumatocoffee.com/cdn/shop/articles/latte-art-what-is-it-and-how-did-it-start-264833.jpg?v=1713277725&width=1600?height=200&width=200',
+    tags: [translations.menu.categories.hot, translations.menu.categories.classic],
+    price: '€3.50'
   }
-}
+]
 
-const typeMessage = (message, charIndex, callback) => {
-  if (charIndex < message.length) {
-    animatedMessage.value += message.charAt(charIndex)
-    setTimeout(() => {
-      typeMessage(message, charIndex + 1, callback)
-    }, 50)
-  } else {
-    animatedMessage.value += '\n'
-    callback()
+const reviews = [
+  {
+    id: 1,
+    name: 'María García',
+    date: 'Hace 2 días',
+    text: '¡Café increíble y ambiente maravilloso! El personal es muy amable.',
+    avatar: 'https://randomuser.me/api/portraits/women/2.jpg?height=40&width=40',
+    rating: 5
+  },
+  {
+    id: 2,
+    name: 'Carlos Rodríguez',
+    date: 'Hace 1 semana',
+    text: 'La mejor cafetería de la ciudad. ¡Me encantan sus bebidas de temporada!',
+    avatar: 'https://randomuser.me/api/portraits/men/7.jpg?height=40&width=40',
+    rating: 4
   }
+]
+
+const review = ref({
+  name: '',
+  email: '',
+  message: ''
+})
+
+const handleSubmit = () => {
+  console.log('Review submitted:', review.value)
+  review.value = { name: '', email: '', message: '' }
 }
 
-const toggleDarkMode = () => {
-  isDarkMode.value = !isDarkMode.value
-}
-
-const handleSubmit = async (e) => {
-  e.preventDefault()
-  try {
-    await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(e.target)).toString()
-    })
-    showCustomMessage(
-      '¡Gracias por suscribirte!',
-      'Pronto recibirás nuestras actualizaciones. Tu taza de café está casi lista...'
-    )
-    email.value = ''
-  } catch (error) {
-    showCustomMessage(
-      'Oops, algo salió mal...',
-      'Parece que nuestro barista digital tuvo un problema. ¡Inténtalo nuevamente más tarde!',
-      true
-    )
-  }
-}
-
-const showCustomMessage = (title, message, isError = false) => {
-  const messageContainer = document.createElement('div')
-  messageContainer.className = `fixed bottom-4 left-1/2 transform -translate-x-1/2 p-4 rounded-md shadow-md ${
-    isError ? 'bg-red-500 text-white' : 'bg-green-500 text-white'
-  }`
-  messageContainer.innerHTML = `
-    <strong class="block text-lg">${title}</strong>
-    <p class="text-sm">${message}</p>
-  `
-  document.body.appendChild(messageContainer)
-  setTimeout(() => {
-    messageContainer.classList.add('opacity-0')
-    setTimeout(() => messageContainer.remove(), 300)
-  }, 5000)
-}
-
+// const handleSubmit = (item) => {
+//   console.log('Ordering:', item)
+//   // Implement order handling logic
+// }
 </script>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-body {
-  font-family: 'Poppins', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.title {
-  font-family: 'Adver Gothic Regular', sans-serif;
-}
-
-:root {
-  /* Paleta de colores con nombres semánticos */
-  --primary-bg: #fdfbf8;
-  /* Fondo principal */
-  --secondary-bg: #efece9;
-  /* Fondo secundario */
-  --primary-text: #3e3e3e;
-  /* Texto principal */
-  --secondary-text: #6e6e6e;
-  /* Texto secundario */
-  --accent: #3c2806;
-  /* Color de acento para botones o elementos clave */
-  --header-bg: #A36F4E;
-  /* Fondo del header principal */
-  --hero-text: #3e3e3e;
-  /* Texto del hero */
-  --footer-bg: #f5f2e7;
-  /* Fondo del footer */
-}
-
-.bg-primary-bg {
-  background-color: var(--primary-bg);
-}
-
-.bg-secondary-bg {
-  background-color: var(--secondary-bg);
-}
-
-.bg-header-bg {
-  background-color: var(--header-bg);
-}
-
-.bg-footer-bg {
-  background-color: var(--footer-bg);
-}
-
-.text-primary-text {
-  color: var(--primary-text);
-}
-
-.text-secondary-text {
-  color: var(--secondary-text);
-}
-
-.text-hero-text {
-  color: var(--hero-text);
-}
-
-.bg-accent {
-  background-color: var(--accent);
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-button:active {
-  transform: translateY(0);
-  box-shadow: none;
-}
-</style>
