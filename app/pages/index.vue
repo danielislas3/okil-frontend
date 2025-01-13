@@ -1,48 +1,14 @@
 <template>
   <div class="bg-primary-bg min-h-screen">
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 transition-all duration-300"
-      :class="{ 'shadow-md': scrolled }">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="flex justify-between items-center h-16">
-          <h1 class="text-accent text-xl font-bold font-display">Okil</h1>
-          <div class="hidden md:flex gap-6">
-            <a v-for="(item, key) in translations.nav" :key="key" href="#"
-              class="text-secondary-text hover:text-accent transition-colors">
-              {{ item }}
-            </a>
-          </div>
-          <!-- Mobile menu button -->
-          <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-accent">
-            <Menu v-if="!mobileMenuOpen" class="w-6 h-6" />
-            <X v-else class="w-6 h-6" />
-          </button>
-        </div>
-      </div>
 
-      <!-- Mobile menu -->
-      <Transition enter-active-class="transition duration-300 ease-out"
-        enter-from-class="transform -translate-y-full opacity-0" enter-to-class="transform translate-y-0 opacity-100"
-        leave-active-class="transition duration-200 ease-in" leave-from-class="transform translate-y-0 opacity-100"
-        leave-to-class="transform -translate-y-full opacity-0">
-        <div v-if="mobileMenuOpen" class="md:hidden bg-white border-t">
-          <div class="px-4 py-2 space-y-1">
-            <a v-for="(item, key) in translations.nav" :key="key" href="#"
-              class="block py-2 text-secondary-text hover:text-accent transition-colors">
-              {{ item }}
-            </a>
-          </div>
-        </div>
-      </Transition>
-    </nav>
-
+    <NavBar />
     <!-- Hero Section -->
     <section class="pt-24 max-w-7xl mx-auto px-4 py-12">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div>
           <h2 class="text-4xl md:text-5xl font-bold text-hero-text leading-tight mb-6">
             Bienvenido a Okil <br />
-            Un nuevo comienzo en el café
+            Donde comienza tu viaje por el café de especialidad
           </h2>
           <div class="bg-accent p-4 rounded-lg inline-block text-white font-semibold">
             Descubre el mundo del café de especialidad con nosotros.
@@ -74,7 +40,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="bg-white p-6 rounded-xl shadow-sm">
           <h3 class="text-2xl font-bold text-hero-text mb-6">Déjanos tu Opinión</h3>
-          <form name="email-subscription" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4" @submit.prevent="handleSubmit">
+          <form name="email-subscription" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+            class="space-y-4" @submit.prevent="handleSubmit">
             <input type="hidden" name="form-name" value="email-subscription" />
             <div style="display:none;">
               <label>Don't fill this out: <input name="bot-field" /></label>
@@ -110,24 +77,22 @@
     <footer class="bg-footer-bg text-secondary-text mt-12 py-8">
       <div class="max-w-7xl mx-auto px-4">
         <h3 class="text-2xl font-bold mb-6">Contáctanos</h3>
-        <div class="space-y-2">
-          <p>Dirección: Calle del Café, Tecámac</p>
+        <address class="not-italic space-y-2">
+          <p>Dirección: 5 de Febrero 123, Tecámac Centro, Tecámac, CP 55740</p>
           <p>Horario: Lunes a Viernes, 7:00 AM - 9:00 PM</p>
           <p>Correo: <a href="mailto:okilcaffe@gmail.com" class="text-accent hover:underline">okilcaffe@gmail.com</a>
           </p>
-        </div>
+        </address>
       </div>
     </footer>
+
   </div>
 </template>
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { Menu, X } from 'lucide-vue-next'
 import MenuCard from '@/components/MenuCard.vue'
 import ReviewCard from '@/components/ReviewCard.vue'
-import translations from '@/locales/es'
 
-const mobileMenuOpen = ref(false)
 const scrolled = ref(false)
 
 const updateScroll = () => {
