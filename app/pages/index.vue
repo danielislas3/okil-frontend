@@ -142,39 +142,77 @@ onUnmounted(() => {
   window.removeEventListener('scroll', updateScroll)
 })
 
+
 const menuItems = [
   {
-    name: 'Cold Brew Bean Family',
-    description: 'Suave y refrescante café cold brew',
-    image: 'https://www.cocinadelirante.com/800x600/filters:format(webp):quality(75)/sites/default/files/images/2024/04/que-es-el-cold-brew.jpg?width=1600?height=200&width=200',
-    tags: [translations.menu.categories.cold, translations.menu.categories.fresh],
-    price: '$45.0',
-    badge: 'Nuevo'
+    name: 'Expreso',
+    description: 'Intenso y aromático shot de café para los amantes del sabor puro.',
+    image: 'https://www.elytienda.com/cdn/shop/products/cafe_expreso.jpg?v=1706491287',
+    price: '$35.0',
+    tags: ['Café Caliente', 'Clásico']
   },
   {
-    name: 'Pumpkin Spice Latte',
-    description: 'Favorito de otoño con calabaza real',
-    image: 'https://www.savoryspiceshop.com/cdn/shop/files/PumpkinSpiceLatte_1050x700.jpg?v=1693930539?&width=1600?height=200&width=200',
-    tags: [
-      translations.menu.categories.hot,
-      translations.menu.categories.sweet,
-      translations.menu.categories.spicy
-    ],
-    price: '$50.0'
+    name: 'Latte',
+    description: 'Café suave con leche perfectamente espumada.',
+    image: 'https://foxsteel.com.mx/wp-content/uploads/2024/07/Latte-cafe-1.jpg',
+    price: '$50.0',
+    tags: ['Café Caliente', 'Reconfortante']
+  },
+  {
+    name: 'Flat White',
+    description: 'Equilibrio perfecto entre espresso y leche sedosa.',
+    image: 'https://methodicalcoffee.com/cdn/shop/articles/Flat_white_sitting_on_a_table.jpg?v=1695740372',
+    price: '$45.0',
+    tags: ['Café Caliente', 'Delicado']
+  },
+  {
+    name: 'Capuchino',
+    description: 'Clásica combinación de espresso y leche espumosa.',
+    image: 'https://media.istockphoto.com/id/505168330/es/foto/taza-de-caf%C3%A9-con-granos-de-caf%C3%A9-con-leche-y-varillas-de-canela.jpg?s=612x612&w=0&k=20&c=ud_g_RyWoPSEJ4_KkpsQfFuWh3iVPlyiTHqpu69ayEg=',
+    price: '$45.0',
+    tags: ['Café Caliente', 'Espumoso']
   },
   {
     name: 'Honey Latte',
-    description: 'Mezcla reconfortante con miel local',
-    image: 'https://fancifuleats.com/wp-content/uploads/2023/03/salted-honey-oat-milk-latte-4.jpg?height=200&width=200',
-    tags: [translations.menu.categories.hot, translations.menu.categories.healthy],
-    price: '$40.0'
+    description: 'Latte suave con un toque dulce de miel.',
+    image: 'https://www.modernfarmhouseeats.com/wp-content/uploads/2021/12/hot-miel-13.jpg',
+    price: '$55.0',
+    tags: ['Café Caliente', 'Dulce']
   },
   {
-    name: 'Classic Cappuccino',
-    description: 'Perfecto balance de espresso y leche',
-    image: 'https://sumatocoffee.com/cdn/shop/articles/latte-art-what-is-it-and-how-did-it-start-264833.jpg?v=1713277725&width=1600?height=200&width=200',
-    tags: [translations.menu.categories.hot, translations.menu.categories.classic],
-    price: '$35.0'
+    name: 'Matcha Latte',
+    description: 'Delicioso y cremoso latte con té verde matcha.',
+    image: 'https://www.launion.com.mx/media/k2/items/cache/d270ade611f15a0d053a4bb77975284b_M.jpg',
+    price: '$60.0',
+    tags: ['Té Caliente', 'Saludable']
+  },
+  {
+    name: 'Chai Latte',
+    description: 'Exótica mezcla de té chai con especias y leche.',
+    image: 'https://www.splenda.com/wp-content/themes/bistrotheme/assets/recipe-images/vanilla-chai-latte.jpg',
+    price: '$60.0',
+    tags: ['Té Caliente', 'Especiado']
+  },
+  {
+    name: 'Dirty Chai',
+    description: 'Chai Latte chai con un toque de espresso para mayor intensidad.',
+    image: 'https://cookhousediary.com/wp-content/uploads/2023/12/dirty-chai-latte.jpg',
+    price: '$65.0',
+    tags: ['Té Caliente', 'Intenso']
+  },
+  {
+    name: 'Chocolate',
+    description: 'Clásico chocolate caliente con leche espumosa.',
+    image: 'https://supercafeteros.com/wp-content/uploads/2021/11/cafe-caliente-con-nubes.jpg',
+    price: '$55.0',
+    tags: ['Caliente', 'Dulce']
+  },
+  {
+    name: 'Mocha',
+    description: 'Deliciosa combinación de espresso, chocolate y leche.',
+    image: 'https://shottbeverages.com/wp-content/uploads/2020/09/classic-mocha.jpg',
+    price: '$60.0',
+    tags: ['Café Caliente', 'Dulce']
   }
 ]
 
