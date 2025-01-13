@@ -1,48 +1,14 @@
 <template>
   <div class="bg-primary-bg min-h-screen">
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 transition-all duration-300"
-      :class="{ 'shadow-md': scrolled }">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="flex justify-between items-center h-16">
-          <h1 class="text-accent text-xl font-bold font-display">Okil</h1>
-          <div class="hidden md:flex gap-6">
-            <a v-for="(item, key) in translations.nav" :key="key" href="#"
-              class="text-secondary-text hover:text-accent transition-colors">
-              {{ item }}
-            </a>
-          </div>
-          <!-- Mobile menu button -->
-          <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 text-accent">
-            <Menu v-if="!mobileMenuOpen" class="w-6 h-6" />
-            <X v-else class="w-6 h-6" />
-          </button>
-        </div>
-      </div>
 
-      <!-- Mobile menu -->
-      <Transition enter-active-class="transition duration-300 ease-out"
-        enter-from-class="transform -translate-y-full opacity-0" enter-to-class="transform translate-y-0 opacity-100"
-        leave-active-class="transition duration-200 ease-in" leave-from-class="transform translate-y-0 opacity-100"
-        leave-to-class="transform -translate-y-full opacity-0">
-        <div v-if="mobileMenuOpen" class="md:hidden bg-white border-t">
-          <div class="px-4 py-2 space-y-1">
-            <a v-for="(item, key) in translations.nav" :key="key" href="#"
-              class="block py-2 text-secondary-text hover:text-accent transition-colors">
-              {{ item }}
-            </a>
-          </div>
-        </div>
-      </Transition>
-    </nav>
-
+    <NavBar />
     <!-- Hero Section -->
     <section class="pt-24 max-w-7xl mx-auto px-4 py-12">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div>
           <h2 class="text-4xl md:text-5xl font-bold text-hero-text leading-tight mb-6">
             Bienvenido a Okil <br />
-            Un nuevo comienzo en el café
+            Donde comienza tu viaje por el café de especialidad
           </h2>
           <div class="bg-accent p-4 rounded-lg inline-block text-white font-semibold">
             Descubre el mundo del café de especialidad con nosotros.
@@ -74,7 +40,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="bg-white p-6 rounded-xl shadow-sm">
           <h3 class="text-2xl font-bold text-hero-text mb-6">Déjanos tu Opinión</h3>
-          <form name="email-subscription" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4" @submit.prevent="handleSubmit">
+          <form name="email-subscription" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+            class="space-y-4" @submit.prevent="handleSubmit">
             <input type="hidden" name="form-name" value="email-subscription" />
             <div style="display:none;">
               <label>Don't fill this out: <input name="bot-field" /></label>
@@ -110,24 +77,22 @@
     <footer class="bg-footer-bg text-secondary-text mt-12 py-8">
       <div class="max-w-7xl mx-auto px-4">
         <h3 class="text-2xl font-bold mb-6">Contáctanos</h3>
-        <div class="space-y-2">
-          <p>Dirección: Calle del Café, Tecámac</p>
+        <address class="not-italic space-y-2">
+          <p>Dirección: 5 de Febrero 123, Tecámac Centro, Tecámac, CP 55740</p>
           <p>Horario: Lunes a Viernes, 7:00 AM - 9:00 PM</p>
           <p>Correo: <a href="mailto:okilcaffe@gmail.com" class="text-accent hover:underline">okilcaffe@gmail.com</a>
           </p>
-        </div>
+        </address>
       </div>
     </footer>
+
   </div>
 </template>
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { Menu, X } from 'lucide-vue-next'
 import MenuCard from '@/components/MenuCard.vue'
 import ReviewCard from '@/components/ReviewCard.vue'
-import translations from '@/locales/es'
 
-const mobileMenuOpen = ref(false)
 const scrolled = ref(false)
 
 const updateScroll = () => {
@@ -142,39 +107,77 @@ onUnmounted(() => {
   window.removeEventListener('scroll', updateScroll)
 })
 
+
 const menuItems = [
   {
-    name: 'Cold Brew Bean Family',
-    description: 'Suave y refrescante café cold brew',
-    image: 'https://www.cocinadelirante.com/800x600/filters:format(webp):quality(75)/sites/default/files/images/2024/04/que-es-el-cold-brew.jpg?width=1600?height=200&width=200',
-    tags: [translations.menu.categories.cold, translations.menu.categories.fresh],
-    price: '$45.0',
-    badge: 'Nuevo'
+    name: 'Expreso',
+    description: 'Intenso y aromático shot de café para los amantes del sabor puro.',
+    image: 'https://www.elytienda.com/cdn/shop/products/cafe_expreso.jpg?v=1706491287',
+    price: '$35.0',
+    tags: ['Café Caliente', 'Clásico']
   },
   {
-    name: 'Pumpkin Spice Latte',
-    description: 'Favorito de otoño con calabaza real',
-    image: 'https://www.savoryspiceshop.com/cdn/shop/files/PumpkinSpiceLatte_1050x700.jpg?v=1693930539?&width=1600?height=200&width=200',
-    tags: [
-      translations.menu.categories.hot,
-      translations.menu.categories.sweet,
-      translations.menu.categories.spicy
-    ],
-    price: '$50.0'
+    name: 'Latte',
+    description: 'Café suave con leche perfectamente espumada.',
+    image: 'https://foxsteel.com.mx/wp-content/uploads/2024/07/Latte-cafe-1.jpg',
+    price: '$50.0',
+    tags: ['Café Caliente', 'Reconfortante']
+  },
+  {
+    name: 'Flat White',
+    description: 'Equilibrio perfecto entre espresso y leche sedosa.',
+    image: 'https://methodicalcoffee.com/cdn/shop/articles/Flat_white_sitting_on_a_table.jpg?v=1695740372',
+    price: '$45.0',
+    tags: ['Café Caliente', 'Delicado']
+  },
+  {
+    name: 'Capuchino',
+    description: 'Clásica combinación de espresso y leche espumosa.',
+    image: 'https://media.istockphoto.com/id/505168330/es/foto/taza-de-caf%C3%A9-con-granos-de-caf%C3%A9-con-leche-y-varillas-de-canela.jpg?s=612x612&w=0&k=20&c=ud_g_RyWoPSEJ4_KkpsQfFuWh3iVPlyiTHqpu69ayEg=',
+    price: '$45.0',
+    tags: ['Café Caliente', 'Espumoso']
   },
   {
     name: 'Honey Latte',
-    description: 'Mezcla reconfortante con miel local',
-    image: 'https://fancifuleats.com/wp-content/uploads/2023/03/salted-honey-oat-milk-latte-4.jpg?height=200&width=200',
-    tags: [translations.menu.categories.hot, translations.menu.categories.healthy],
-    price: '$40.0'
+    description: 'Latte suave con un toque dulce de miel.',
+    image: 'https://www.modernfarmhouseeats.com/wp-content/uploads/2021/12/hot-miel-13.jpg',
+    price: '$55.0',
+    tags: ['Café Caliente', 'Dulce']
   },
   {
-    name: 'Classic Cappuccino',
-    description: 'Perfecto balance de espresso y leche',
-    image: 'https://sumatocoffee.com/cdn/shop/articles/latte-art-what-is-it-and-how-did-it-start-264833.jpg?v=1713277725&width=1600?height=200&width=200',
-    tags: [translations.menu.categories.hot, translations.menu.categories.classic],
-    price: '$35.0'
+    name: 'Matcha Latte',
+    description: 'Delicioso y cremoso latte con té verde matcha.',
+    image: 'https://www.launion.com.mx/media/k2/items/cache/d270ade611f15a0d053a4bb77975284b_M.jpg',
+    price: '$60.0',
+    tags: ['Té Caliente', 'Saludable']
+  },
+  {
+    name: 'Chai Latte',
+    description: 'Exótica mezcla de té chai con especias y leche.',
+    image: 'https://www.splenda.com/wp-content/themes/bistrotheme/assets/recipe-images/vanilla-chai-latte.jpg',
+    price: '$60.0',
+    tags: ['Té Caliente', 'Especiado']
+  },
+  {
+    name: 'Dirty Chai',
+    description: 'Chai Latte chai con un toque de espresso para mayor intensidad.',
+    image: 'https://cookhousediary.com/wp-content/uploads/2023/12/dirty-chai-latte.jpg',
+    price: '$65.0',
+    tags: ['Té Caliente', 'Intenso']
+  },
+  {
+    name: 'Chocolate',
+    description: 'Clásico chocolate caliente con leche espumosa.',
+    image: 'https://supercafeteros.com/wp-content/uploads/2021/11/cafe-caliente-con-nubes.jpg',
+    price: '$55.0',
+    tags: ['Caliente', 'Dulce']
+  },
+  {
+    name: 'Mocha',
+    description: 'Deliciosa combinación de espresso, chocolate y leche.',
+    image: 'https://shottbeverages.com/wp-content/uploads/2020/09/classic-mocha.jpg',
+    price: '$60.0',
+    tags: ['Café Caliente', 'Dulce']
   }
 ]
 
