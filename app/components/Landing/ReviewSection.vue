@@ -4,34 +4,39 @@
       <!-- Formulario de opinión -->
       <div class="bg-white p-6 rounded-xl shadow-sm">
         <h3 class="text-2xl font-bold text-hero-text mb-6">Déjanos tu Opinión</h3>
-        <form name="email-subscription" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-          class="space-y-4" @submit.prevent="handleSubmit">
-          <input type="hidden" name="form-name" value="email-subscription" />
+        <form name="review-form" method="POST" action="/success" data-netlify="true" netlify-honeypot="bot-field"
+          class="space-y-4">
+          <input type="hidden" name="form-name" value="review-form" />
+
           <div style="display:none;">
-            <label>Don't fill this out: <input name="bot-field" /></label>
+            <label>No llenar este campo: <input name="bot-field" /></label>
           </div>
+
           <div>
             <label class="block text-sm text-secondary-text mb-2">Tu Nombre</label>
-            <input type="text" v-model="review.name"
-              class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent" />
+            <input type="text" name="name" v-model="review.name"
+              class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent" required />
           </div>
+
           <div>
             <label class="block text-sm text-secondary-text mb-2">Tu Correo</label>
-            <input type="email" v-model="review.email"
-              class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent" />
+            <input type="email" name="email" v-model="review.email"
+              class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent" required />
           </div>
+
           <div>
             <label class="block text-sm text-secondary-text mb-2">Tu Opinión</label>
-            <textarea v-model="review.message" rows="4"
-              class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"></textarea>
+            <textarea name="message" v-model="review.message" rows="4"
+              class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent"
+              required></textarea>
           </div>
-          <button type="submit"
-            class="px-6 py-2 bg-accent text-white rounded-lg hover:bg-opacity-90 transition-colors">
+
+          <button type="submit" class="px-6 py-2 bg-accent text-white rounded-lg hover:bg-opacity-90 transition-colors">
             Enviar
           </button>
         </form>
       </div>
-      <!-- Lista de opiniones -->
+
       <div class="space-y-4">
         <ReviewCard v-for="review in reviews" :key="review.id" v-bind="review" />
       </div>
@@ -66,9 +71,4 @@ const reviews = [
     rating: 4
   }
 ]
-
-const handleSubmit = () => {
-  console.log('Review submitted:', review.value)
-  review.value = { name: '', email: '', message: '' }
-}
 </script>
