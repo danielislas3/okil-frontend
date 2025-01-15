@@ -95,7 +95,7 @@ export const useMenuStore = defineStore('menu', () => {
     {
       name: 'Filtrados Especiales',
       description: 'Café preparado cuidadosamente para resaltar sus notas de origen.',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Pour_Over_Coffee.jpg',
+      image: 'https://tse1.mm.bing.net/th?id=OIP.5EOwpJv34aS95PbRRhXcwgHaE8&pid=Api',
       price: '$60.0',
       tags: ['Café Caliente', 'Especialidad']
     },
@@ -103,70 +103,70 @@ export const useMenuStore = defineStore('menu', () => {
     {
       name: 'Honey Latte Frío',
       description: 'Latte frío con un toque dulce de miel natural.',
-      image: 'https://www.modernfarmhouseeats.com/wp-content/uploads/2021/12/hot-miel-13.jpg',
+      image: 'https://tse4.mm.bing.net/th?id=OIP.j2R8fTEmevLpks6Cs-5RbAHaIC&pid=Api',
       price: '$65.0',
       tags: ['Café Frío', 'Dulce']
     },
     {
       name: 'Latte Frío',
       description: 'Café con leche servido frío, con textura suave y equilibrada.',
-      image: 'https://media.istockphoto.com/photos/iced-coffee-picture-id961267652',
+      image: 'https://tse4.mm.bing.net/th?id=OIP.mi_PUZI6o2BZ1PNwX90uvgHaLG&pid=Api',
       price: '$55.0',
       tags: ['Café Frío', 'Refrescante']
     },
     {
       name: 'Cold Brew',
       description: 'Café preparado en frío durante 12 horas, suave y refrescante.',
-      image: 'https://coffeeatthree.com/wp-content/uploads/2022/06/cold-brew-coffee-guide-featured.jpg',
+      image: 'https://tse3.mm.bing.net/th?id=OIP.wOYEBwSYNN_MKEv-gVqU7gHaHZ&pid=Api',
       price: '$55.0',
       tags: ['Café Frío', 'Suave']
     },
     {
       name: 'Expresso Tonic',
       description: 'Mezcla vibrante de espresso y agua tónica, ideal para días calurosos.',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/3/31/Espresso_Tonic.jpg',
+      image: 'https://tse4.mm.bing.net/th?id=OIP._sZ7_6iiuPAEw1U6vKiokgHaE8&pid=Api',
       price: '$60.0',
       tags: ['Café Frío', 'Burbujeante']
     },
     {
       name: 'Cold Brew Tonic',
       description: 'Bebida burbujeante que combina cold brew y agua tónica.',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/3/31/Espresso_Tonic.jpg',
+      image: 'https://tse4.mm.bing.net/th?id=OIP.9_HifDNoXusgzWMdj3KOeQHaLH&pid=Api',
       price: '$65.0',
       tags: ['Café Frío', 'Refrescante']
     },
     {
       name: 'Chai Frío',
       description: 'Té chai especiado servido frío, dulce y con un toque de especias.',
-      image: 'https://cdn.pixabay.com/photo/2016/11/21/12/59/chai-1840247_1280.jpg',
+      image: 'https://tse2.mm.bing.net/th?id=OIP.rhr9jSjWVWYOeK2RnXvowwHaEJ&pid=Api',
       price: '$70.0',
       tags: ['Té Frío', 'Especiado']
     },
     {
       name: 'Matcha Frío',
       description: 'Té matcha frío con leche, cremoso y revitalizante.',
-      image: 'https://cdn.pixabay.com/photo/2017/06/02/22/44/matcha-2368342_1280.jpg',
+      image: 'https://tse3.mm.bing.net/th?id=OIP.IGSeDq_keQqwPfx2vInfkQHaHa&pid=Api',
       price: '$70.0',
       tags: ['Té Frío', 'Saludable']
     },
     {
       name: 'Dirty Chai Frío',
       description: 'La mezcla perfecta de chai especiado, leche y un toque de espresso frío.',
-      image: 'https://cdn.pixabay.com/photo/2016/03/05/19/02/coffee-1236480_1280.jpg',
+      image: 'https://tse2.mm.bing.net/th?id=OIP.7Mn7z4IxOt2Id4-sFj3mhgHaHY&pid=Api',
       price: '$75.0',
       tags: ['Té Frío', 'Intenso']
     },
     {
       name: 'Okil Tonic',
-      description: 'Creación exclusiva con notas cítricas y agua tónica burbujeante.',
-      image: 'https://cdn.pixabay.com/photo/2016/03/05/19/02/coffee-1236480_1280.jpg',
+      description: 'Creación exclusiva cold brew con notas cítricas, jarabe de la casa y agua tónica burbujeante.',
+      image: 'https://wandp.com/cdn/shop/articles/DT_VM_Brew_002_Web_4x5_48c5d2d1-e4ee-412d-9ccc-9083bdcabcb9.jpg?v=1563394796',
       price: '$70.0',
       tags: ['Especial', 'Refrescante']
     },
     {
-      name: 'Agua Mineral',
-      description: 'Agua mineral refrescante con burbujas suaves.',
-      image: 'https://cdn.pixabay.com/photo/2017/04/28/09/47/glass-2263827_1280.jpg',
+      name: 'Agua Mineral Garcicrespo',
+      description: 'Agua mineral natural que se extrae de un manantial en Tehuacán.',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIkXcf6Z4bupBzbGyKXjVJYP9BzqtE1OCPDvia01EcDTUbQ23vw6iwn4qVyj29UVHul9A&usqp=CAU',
       price: '$45.0',
       tags: ['Bebida Fría', 'Clásico']
     },
@@ -174,21 +174,21 @@ export const useMenuStore = defineStore('menu', () => {
     {
       name: 'Cold Brew Gin',
       description: 'Cold brew infusionado con gin, para quienes buscan algo único.',
-      image: 'https://cdn.pixabay.com/photo/2015/10/02/20/41/gin-tonic-969985_1280.jpg',
+      image: 'https://tse3.mm.bing.net/th?id=OIP.WUxKjJGy7LlAWtRkDgHsgQHaG1&pid=Api',
       price: '$120.0',
       tags: ['Café Especial', 'Con Alcohol']
     },
     {
       name: 'Cold Brew Scotch',
       description: 'Mezcla de cold brew y whisky escocés, sofisticado y elegante.',
-      image: 'https://cdn.pixabay.com/photo/2015/04/10/00/41/whiskey-715106_1280.jpg',
+      image: 'https://tse1.mm.bing.net/th?id=OIP.odQHAUbT0hqb3Bdx1iL-lwHaHa&pid=Api',
       price: '$130.0',
       tags: ['Café Especial', 'Con Alcohol']
     },
     {
       name: 'Carajillo',
       description: 'Café con licor, ideal para cerrar el día con estilo.',
-      image: 'https://cdn.pixabay.com/photo/2017/02/16/18/57/cocktail-2071483_1280.jpg',
+      image: 'https://tse1.mm.bing.net/th?id=OIP.oeQSqcE9diUXT-A8Tu2fpAHaE8&pid=Api',
       price: '$120.0',
       tags: ['Café Especial', 'Con Alcohol']
     }
