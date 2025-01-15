@@ -5,7 +5,13 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4
   },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/fonts', '@nuxtjs/sitemap', 'nuxt-aos'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxt/fonts',
+    '@nuxtjs/sitemap',
+    'nuxt-aos',
+    '@pinia/nuxt',
+  ],
   nitro: {
     prerender: {
       routes: ["/"],
