@@ -15,7 +15,7 @@
     <h4 class="font-semibold text-[#4A3425] text-lg mb-2">{{ name }}</h4>
     <p class="text-sm text-[#6B5D4F] mb-4">{{ description }}</p>
     <div class="flex gap-2 flex-wrap mb-4">
-      <BaseTag v-for="tag in tags" :key="tag">{{ tag }}</BaseTag>
+      <LandingBaseTag v-for="tag in tags" :key="tag">{{ tag }}</LandingBaseTag>
     </div>
     <div class="flex justify-between items-center">
       <span class="font-bold text-[#8B5E3C]">{{ price }}</span>
