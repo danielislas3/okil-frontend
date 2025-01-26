@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt-aos',
     '@pinia/nuxt',
-    '@nuxtjs/supabase',
+    // '@nuxtjs/supabase',
     'nuxt-gtag',
   ],
   nitro: {
@@ -38,4 +38,8 @@ export default defineNuxtConfig({
       { name: 'Bingo Dilan Regular', src: '/BingoDilanRegular.ttf' },
     ]
   },
+  runtimeConfig: {
+    public: {
+      appDomain : 'https://okilcafe.mx',
+    }}
 })
