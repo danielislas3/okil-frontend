@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     'nuxt-aos',
     '@pinia/nuxt',
     '@nuxtjs/supabase',
+    'nuxt-gtag',
   ],
   nitro: {
     prerender: {
@@ -22,9 +23,12 @@ export default defineNuxtConfig({
   plugins: [
     { src: '~/plugins/Vue3Lottie.client.ts', mode: 'client' }
   ],
+  gtag: {
+    id: process.env.NUXT_PUBLIC_GTAG_ID
+  },
   site: {
-    url: 'https://okilcafe.mx', 
-    name: 'Okil Café - Café de especialidad', 
+    url: 'https://okilcafe.mx',
+    name: 'Okil Café - Café de especialidad',
     }, 
   fonts: {
     providers: {
