@@ -1,88 +1,113 @@
 <template>
-  <div class="bg-primary-bg min-h-screen py-12">
-    <div class="max-w-4xl mx-auto px-4">
-      <header class="text-center mb-8">
-        <h1 class="text-4xl font-bold text-hero-text">{{ cafe.nombre }}</h1>
-        <p class="text-lg text-secondary-text mt-2">{{ cafe.varietal }} - {{ cafe.region }}</p>
-      </header>
+  <div class="bg-primary-bg min-h-screen flex flex-col">
+    <NavBar />
 
-      <div v-if="cafe.imagen" class="mb-8">
-        <img :src="cafe.imagen" :alt="cafe.nombre" class="w-full h-64 object-cover rounded-lg shadow-md" />
-      </div>
+    <main class="flex-grow">
+      <section class="max-w-7xl mx-auto px-4 py-12 space-y-12">
+        <!-- Encabezado principal -->
+        <div class="text-center space-y-2 py-6 bg-white shadow-md rounded-lg" data-aos="fade-up">
+          <h1 class="text-4xl font-bold text-primary">{{ coffee.name }}</h1>
+          <p class="text-lg text-secondary">
+            Finca: <span class="font-semibold bg-primary-light text-primary-dark px-2 py-1 rounded-md">{{ coffee.finca }}</span>
+          </p>
+          <p class="text-sm text-secondary-light italic">
+            Altitud: {{ coffee.altitud }} | Fecha de tostado: {{ coffee.fechaTostado }}
+          </p>
+        </div>
 
-      <section class="bg-white p-6 rounded-lg shadow-md">
-        <h2 class="text-2xl font-semibold text-hero-text mb-6">Ficha Técnica</h2>
-        <ul class="space-y-4">
-          <li>
-            <strong class="text-secondary-text">Altitud:</strong>
-            <span>{{ cafe.altitud }}</span>
-          </li>
-          <li>
-            <strong class="text-secondary-text">Proceso:</strong>
-            <span>{{ cafe.proceso }}</span>
-          </li>
-          <li>
-            <strong class="text-secondary-text">Notas de Cata:</strong>
-            <span>{{ cafe.notas }}</span>
-          </li>
-          <li>
-            <strong class="text-secondary-text">Tostado:</strong>
-            <span>{{ cafe.tostado }}</span>
-          </li>
-          <li>
-            <strong class="text-secondary-text">Fecha de Tostado:</strong>
-            <span>{{ cafe.fechaTostado }}</span>
-          </li>
-          <li>
-            <strong class="text-secondary-text">Recomendaciones:</strong>
-            <span>{{ cafe.recomendaciones }}</span>
-          </li>
-        </ul>
+        <!-- Imagen destacada -->
+        <div class="relative w-full h-64 sm:h-96 rounded-xl overflow-hidden shadow-lg" data-aos="zoom-in">
+          <img
+            :src="coffee.image"
+            alt="Imagen del café"
+            class="object-cover w-full h-full"
+          />
+        </div>
+
+        <!-- Características principales -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card title="Productor" :content="coffee.productor" />
+          <Card title="Variedad" :content="coffee.variedad" />
+          <Card title="Método" :content="coffee.metodo" />
+        </div>
+
+        <!-- Notas de cata y perfil en taza -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <DynamicCard
+            title="Notas de Cata"
+            :content="coffee.notasDeCata"
+            animation="fade-right"
+          />
+          <DynamicCard
+            title="Perfil en Taza"
+            :content="coffee.perfilEnTaza"
+            animation="fade-left"
+          />
+        </div>
+
+        <!-- Puntuación SCA -->
+        <div
+          class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 text-white rounded-lg p-6 shadow-lg"
+          data-aos="zoom-in"
+        >
+          <h2 class="text-2xl font-bold mb-2">Puntuación SCA</h2>
+          <p class="text-lg font-semibold">{{ coffee.puntuacionSCA }}</p>
+        </div>
+
+        <!-- Tabla de precios -->
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h2 class="text-xl font-bold text-primary mb-4">Precios</h2>
+          <table class="w-full border-collapse border border-gray-300 text-left">
+            <thead class="bg-primary-light text-primary-dark">
+              <tr>
+                <th class="border px-4 py-2">Cantidad</th>
+                <th class="border px-4 py-2">Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="even:bg-gray-100 hover:bg-gray-200">
+                <td class="border px-4 py-2">250g</td>
+                <td class="border px-4 py-2">{{ coffee.precios[0] }}</td>
+              </tr>
+              <tr class="even:bg-gray-100 hover:bg-gray-200">
+                <td class="border px-4 py-2">500g</td>
+                <td class="border px-4 py-2">{{ coffee.precios[1] }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
-    </div>
+    </main>
+
+    <LandingFooter />
   </div>
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router'
 
-const cafes = [
-  {
-    id: 'cafe-bourbon',
-    nombre: 'Bourbon Especial',
-    varietal: 'Bourbon',
-    region: 'Chiapas, México',
-    altitud: '1200 - 1500 msnm',
-    proceso: 'Lavado',
-    notas: 'Chocolate, Frutos Rojos, Caramelo',
-    tostado: 'Medio',
-    fechaTostado: '15 Diciembre 2024',
-    recomendaciones: 'Método V60, ratio 1:16',
-    imagen: '/img/cafe-bourbon.jpg'
-  },
-  {
-    id: 'cafe-gesha',
-    nombre: 'Gesha Premium',
-    varietal: 'Gesha',
-    region: 'Oaxaca, México',
-    altitud: '1800 msnm',
-    proceso: 'Natural',
-    notas: 'Jazmín, Durazno, Frutas Tropicales',
-    tostado: 'Claro',
-    fechaTostado: '10 Diciembre 2024',
-    recomendaciones: 'Método Chemex, ratio 1:15',
-    imagen: 'https://optimise2.assets-servd.host/worldcoffee-research/production/images/Arabica/Bourbon-3.jpg?w=480&q=82&auto=format&fit=min&crop=focalpoint&fp-x=0.5&fp-y=0.5&dm=1684915604&s=036836cf20eadf425926f7dbcf227704'
-  }
-];
 
-// Capturar el ID desde la ruta
-const route = useRoute();
-const cafe = cafes.find((cafe) => cafe.id === route.params.id);
+const route = useRoute()
+const query = route.query
 
-if (!cafe) {
-  throw new Error('Café no encontrado');
+const coffee = {
+  name: query.name || "Café Especial",
+  productor: query.productor || "Adán Hernández",
+  finca: query.finca || "El Guayabital",
+  altitud: query.altitud || "1000 msnm",
+  variedad: query.variedad || "Bourbon, Typica, Sarchimor",
+  metodo:
+    query.metodo ||
+    "Fermentación colombiana, Honey rojo (15 días), Honey negro (26 días)",
+  notasDeCata:
+    query.notasDeCata ||
+    "Dulzura balanceada, acidez cítrica suave, notas achocolatadas",
+  perfilEnTaza:
+    query.perfilEnTaza || "Cuerpo medio, dulce y vibrante",
+  puntuacionSCA: query.puntuacionSCA || "85 pts",
+  precios: [query.precio250 || "$180", query.precio500 || "$300"],
+  fechaTostado: query.fechaTostado || "2025-01-01",
+  image:
+    query.image ||
+    "https://tse1.mm.bing.net/th?id=OIP.5EOwpJv34aS95PbRRhXcwgHaE8&pid=Api",
 }
 </script>
-
-<style>
-</style>
