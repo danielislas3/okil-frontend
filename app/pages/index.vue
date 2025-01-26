@@ -13,10 +13,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import NavBar from '@/components/NavBar.vue'
-const config = useRuntimeConfig()
 
+const config = useRuntimeConfig()
+const { logSource } = useTrafficLogger()
 
 const activeFilters = ref({})
 
@@ -65,5 +64,7 @@ useHead({
     }
   ]
 })
-
+onMounted(async() => {
+  await logSource()
+})
 </script>

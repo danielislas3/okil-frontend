@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt-aos',
     '@pinia/nuxt',
-    // '@nuxtjs/supabase',
+    '@nuxtjs/supabase',
     'nuxt-gtag',
   ],
   nitro: {
@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   site: {
     url: 'https://okilcafe.mx',
     name: 'Okil Café - Café de especialidad',
-    }, 
+  },
   fonts: {
     providers: {
       custom: '~/providers/custom',
@@ -40,6 +40,10 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      appDomain : 'https://okilcafe.mx',
-    }}
+      appDomain: 'https://okilcafe.mx',
+    }
+  },
+  supabase: {
+    redirect: false,
+  }
 })
