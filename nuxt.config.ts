@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt-aos',
     '@pinia/nuxt',
+    '@nuxtjs/supabase',
   ],
   nitro: {
     prerender: {
