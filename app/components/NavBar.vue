@@ -5,7 +5,7 @@
     <div class="max-w-7xl mx-auto px-4">
       <div class="flex justify-between items-center h-16">
         <!-- <h1 class="text-accent text-xl font-bold font-display">Okil</h1> -->
-        <img src="/img/logo.png" alt="Logo" class="h-auto max-h-20">
+        <img src="/img/logo.webp" alt="Logo" class="h-auto max-h-28">
         <div class="hidden md:flex gap-6">
           <a v-for="(item, key) in translations.nav" :key="key" href="#"
             class="text-secondary-text hover:text-accent transition-colors">
