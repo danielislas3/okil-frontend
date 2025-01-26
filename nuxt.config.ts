@@ -11,6 +11,8 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt-aos',
     '@pinia/nuxt',
+    // '@nuxtjs/supabase',
+    'nuxt-gtag',
   ],
   nitro: {
     prerender: {
@@ -21,9 +23,12 @@ export default defineNuxtConfig({
   plugins: [
     { src: '~/plugins/Vue3Lottie.client.ts', mode: 'client' }
   ],
+  gtag: {
+    id: process.env.NUXT_PUBLIC_GTAG_ID
+  },
   site: {
-    url: 'https://okilcafe.mx', 
-    name: 'Okil Café - Café de especialidad', 
+    url: 'https://okilcafe.mx',
+    name: 'Okil Café - Café de especialidad',
     }, 
   fonts: {
     providers: {
@@ -33,4 +38,8 @@ export default defineNuxtConfig({
       { name: 'Bingo Dilan Regular', src: '/BingoDilanRegular.ttf' },
     ]
   },
+  runtimeConfig: {
+    public: {
+      appDomain : 'https://okilcafe.mx',
+    }}
 })
