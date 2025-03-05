@@ -20,6 +20,7 @@ export default defineNuxtConfig({
 
     },
   },
+  serverDir: "app/server",
   plugins: [
     { src: '~/plugins/Vue3Lottie.client.ts', mode: 'client' }
   ],
