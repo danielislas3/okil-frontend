@@ -19,12 +19,15 @@
     "nuxt-aos": "1.2.5",
     "nuxt-gtag": "3.0.2",
     "pinia": "^2.3.0",
+    "pinia-plugin-persistedstate": "^4.2.0",
     "vue": "latest",
     "vue-router": "latest",
     "vue3-lottie": "^3.3.1"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "npm:@nuxtjs/tailwindcss@nightly"
+    "@nuxtjs/tailwindcss": "^6.13.2",
+    "@pinia/nuxt": "^0.9.0"
+
   },
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
