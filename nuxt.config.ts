@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/supabase',
     'nuxt-gtag',
+    '@nuxt/eslint'
   ],
   nitro: {
     prerender: {

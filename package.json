@@ -7,14 +7,15 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "lint:fix": "eslint . --fix && prettier --write .",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/eslint": "1.2.0",
     "@nuxt/fonts": "^0.10.2",
     "@nuxtjs/sitemap": "^7.0.0",
     "@nuxtjs/supabase": "1.4.6",
     "@pinia/nuxt": "0.9.0",
-    "husky": "^9.1.7",
     "lucide-vue-next": "^0.469.0",
     "nuxt": "^3.16.0",
     "nuxt-aos": "1.2.5",
@@ -27,7 +28,11 @@
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.13.2",
-    "@pinia/nuxt": "^0.9.0"
+    "@pinia/nuxt": "^0.9.0",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.7"
   },
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
