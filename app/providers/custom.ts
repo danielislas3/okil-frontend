@@ -10,10 +10,8 @@ export default defineFontProvider('custom', () => {
       }
       console.log(`Resolving font: ${fontFamily}`)
       return {
-        fonts: [
-          { src: [{ url: '/BingoDilanRegular.ttf', format: 'ttf' }] },
-        ],
+        fonts: [{ src: [{ url: '/BingoDilanRegular.ttf', format: 'ttf' }] }]
       }
-    },
+    }
   }
 })

@@ -39,7 +39,8 @@ export const useMenuStore = defineStore('menu', () => {
     {
       name: 'Capuchino',
       description: 'Clásico café con leche espumosa y una textura cremosa.',
-      image: 'https://media.istockphoto.com/id/505168330/es/foto/taza-de-caf%C3%A9-con-granos-de-caf%C3%A9-con-leche-y-varillas-de-canela.jpg?s=612x612&w=0&k=20&c=ud_g_RyWoPSEJ4_KkpsQfFuWh3iVPlyiTHqpu69ayEg=',
+      image:
+        'https://media.istockphoto.com/id/505168330/es/foto/taza-de-caf%C3%A9-con-granos-de-caf%C3%A9-con-leche-y-varillas-de-canela.jpg?s=612x612&w=0&k=20&c=ud_g_RyWoPSEJ4_KkpsQfFuWh3iVPlyiTHqpu69ayEg=',
       price: '$45.0',
       tags: ['Café Caliente', 'Espumoso']
     },
@@ -159,14 +160,16 @@ export const useMenuStore = defineStore('menu', () => {
     {
       name: 'Okil Tonic',
       description: 'Creación exclusiva cold brew con notas cítricas, jarabe de la casa y agua tónica burbujeante.',
-      image: 'https://wandp.com/cdn/shop/articles/DT_VM_Brew_002_Web_4x5_48c5d2d1-e4ee-412d-9ccc-9083bdcabcb9.jpg?v=1563394796',
+      image:
+        'https://wandp.com/cdn/shop/articles/DT_VM_Brew_002_Web_4x5_48c5d2d1-e4ee-412d-9ccc-9083bdcabcb9.jpg?v=1563394796',
       price: '$70.0',
       tags: ['Especial', 'Refrescante']
     },
     {
       name: 'Agua Mineral Garcicrespo',
       description: 'Agua mineral natural que se extrae de un manantial en Tehuacán.',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIkXcf6Z4bupBzbGyKXjVJYP9BzqtE1OCPDvia01EcDTUbQ23vw6iwn4qVyj29UVHul9A&usqp=CAU',
+      image:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIkXcf6Z4bupBzbGyKXjVJYP9BzqtE1OCPDvia01EcDTUbQ23vw6iwn4qVyj29UVHul9A&usqp=CAU',
       price: '$45.0',
       tags: ['Bebida Fría', 'Clásico']
     },
@@ -199,10 +202,8 @@ export const useMenuStore = defineStore('menu', () => {
     tag: ''
   })
 
-
-const types = ['Café Caliente', 'Café Frío', 'Té Caliente', 'Té Frío', 'Especial']
-const tags = ['Clásico', 'Dulce', 'Refrescante', 'Intenso', 'Con Alcohol']
-
+  const types = ['Café Caliente', 'Café Frío', 'Té Caliente', 'Té Frío', 'Especial']
+  const tags = ['Clásico', 'Dulce', 'Refrescante', 'Intenso', 'Con Alcohol']
 
   const updateFilters = (newFilters: Filters) => {
     filters.value = newFilters
