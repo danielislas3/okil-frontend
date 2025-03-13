@@ -1,0 +1,2 @@
+
+node scripts/add-emoji.js $1

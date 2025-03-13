@@ -1,0 +1,22 @@
+{
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "endOfLine": "auto",
+  "tabWidth": 2,
+  "quoteProps": "consistent",
+  "singleQuote": true,
+  "printWidth": 120,
+  "trailingComma": "none",
+  "semi": false,
+  "vueIndentScriptAndStyle": true,
+  "htmlWhitespaceSensitivity": "ignore",
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "overrides": [
+    {
+      "files": ["*.vue", "*.html"],
+      "options": {
+        "singleAttributePerLine": true
+      }
+    }
+  ]
+}
