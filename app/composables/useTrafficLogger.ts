@@ -1,12 +1,7 @@
-interface TrafficSource {
-  source: string;
-  user_agent: string;
-  ip_address: string;
-  visit_count: number;
-}
-// @ts-nocheck
+import { type Database } from '../types/database.types';
+
 export const useTrafficLogger = () => {
-  const supabase = useSupabaseClient();
+  const supabase = useSupabaseClient<Database>();
   const route = useRoute();
 
   const logSource = async (): Promise<void> => {
@@ -15,7 +10,7 @@ export const useTrafficLogger = () => {
     const userAgent = navigator.userAgent;
 
     // Obtener la dirección IP del usuario
-    const ip = await fetch('https://api.ipify.org?format=json')
+    const ip: string = await fetch('https://api.ipify.org?format=json')
       .then((res) => res.json())
       .then((data) => data.ip)
       .catch(() => 'unknown');
@@ -23,7 +18,7 @@ export const useTrafficLogger = () => {
     try {
       // Verificar si ya existe un registro con esta IP y fuente
       const { data: existingLog, error: fetchError } = await supabase
-        .from('traffic_sources') // Tipamos explícitamente la tabla
+        .from('traffic_sources')
         .select('*')
         .eq('ip_address', ip)
         .eq('source', source)
@@ -38,7 +33,7 @@ export const useTrafficLogger = () => {
         // Si ya existe, incrementar el contador de visitas
         const { error: updateError } = await supabase
           .from('traffic_sources')
-          .update({ visit_count: existingLog.visit_count + 1 })
+          .update({ visit_count: (existingLog.visit_count ?? 0) + 1 })
           .eq('ip_address', ip)
           .eq('source', source);
 
@@ -49,12 +44,12 @@ export const useTrafficLogger = () => {
 
         console.log(
           `Visita registrada. Total de visitas para ${source}: ${
-            existingLog.visit_count + 1
+            (existingLog.visit_count ?? 0) + 1
           }`
         );
       } else {
         // Si no existe, insertar un nuevo registro
-        const newLog: TrafficSource = {
+        const newLog: Database['public']['Tables']['traffic_sources']['Insert'] = {
           source,
           user_agent: userAgent,
           ip_address: ip,
@@ -62,7 +57,7 @@ export const useTrafficLogger = () => {
         };
 
         const { error: insertError } = await supabase
-          .from<TrafficSource>('traffic_sources')
+          .from('traffic_sources')
           .insert([newLog]);
 
         if (insertError) {
