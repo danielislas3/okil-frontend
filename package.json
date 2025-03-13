@@ -9,7 +9,8 @@
     "preview": "nuxt preview",
     "prepare": "husky",
     "lint:fix": "eslint . --fix && prettier --write .",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "release": "bash scripts/create-release.sh"
   },
   "dependencies": {
     "@nuxt/eslint": "1.2.0",
