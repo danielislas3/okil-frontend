@@ -1,0 +1,6 @@
+Version 0.3.0:
+ - 🛠️ chore: add VERSION file
+ - 🤖 chore: update package.json to prepare husky and adjust pinia version
+ - feat: add ESLint configuration and integrate with Nuxt
+ - chore: update nuxt version to 3.16.0
+
