@@ -8,7 +8,6 @@
 </template>
 
 <script setup>
-
   const appName = 'OKIL'
 
   const route = useRoute()

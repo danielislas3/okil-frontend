@@ -1,19 +1,19 @@
-import { type Database } from '../types/database.types';
+import type { Database } from '../types/database.types'
 
 export const useTrafficLogger = () => {
-  const supabase = useSupabaseClient<Database>();
-  const route = useRoute();
+  const supabase = useSupabaseClient<Database>()
+  const route = useRoute()
 
   const logSource = async (): Promise<void> => {
     // Extraer el parámetro "source" del router
-    const source = (route.query.source as string) || 'direct';
-    const userAgent = navigator.userAgent;
+    const source = (route.query.source as string) || 'direct'
+    const userAgent = navigator.userAgent
 
     // Obtener la dirección IP del usuario
     const ip: string = await fetch('https://api.ipify.org?format=json')
-      .then((res) => res.json())
-      .then((data) => data.ip)
-      .catch(() => 'unknown');
+      .then(res => res.json())
+      .then(data => data.ip)
+      .catch(() => 'unknown')
 
     try {
       // Verificar si ya existe un registro con esta IP y fuente
@@ -22,11 +22,11 @@ export const useTrafficLogger = () => {
         .select('*')
         .eq('ip_address', ip)
         .eq('source', source)
-        .single();
+        .single()
 
       if (fetchError && fetchError.code !== 'PGRST116') {
-        console.error('Error verificando registros:', fetchError.message);
-        return;
+        console.error('Error verificando registros:', fetchError.message)
+        return
       }
 
       if (existingLog) {
@@ -35,44 +35,38 @@ export const useTrafficLogger = () => {
           .from('traffic_sources')
           .update({ visit_count: (existingLog.visit_count ?? 0) + 1 })
           .eq('ip_address', ip)
-          .eq('source', source);
+          .eq('source', source)
 
         if (updateError) {
-          console.error('Error actualizando el contador de visitas:', updateError.message);
-          return;
+          console.error('Error actualizando el contador de visitas:', updateError.message)
+          return
         }
 
-        console.log(
-          `Visita registrada. Total de visitas para ${source}: ${
-            (existingLog.visit_count ?? 0) + 1
-          }`
-        );
+        console.log(`Visita registrada. Total de visitas para ${source}: ${(existingLog.visit_count ?? 0) + 1}`)
       } else {
         // Si no existe, insertar un nuevo registro
         const newLog: Database['public']['Tables']['traffic_sources']['Insert'] = {
           source,
           user_agent: userAgent,
           ip_address: ip,
-          visit_count: 1, // Inicia con 1 visita
-        };
-
-        const { error: insertError } = await supabase
-          .from('traffic_sources')
-          .insert([newLog]);
-
-        if (insertError) {
-          console.error('Error registrando la fuente:', insertError.message);
-          return;
+          visit_count: 1 // Inicia con 1 visita
         }
 
-        console.log('Nueva fuente registrada con éxito');
+        const { error: insertError } = await supabase.from('traffic_sources').insert([newLog])
+
+        if (insertError) {
+          console.error('Error registrando la fuente:', insertError.message)
+          return
+        }
+
+        console.log('Nueva fuente registrada con éxito')
       }
     } catch (err) {
-      console.error('Error general en logSource:', err);
+      console.error('Error general en logSource:', err)
     }
-  };
+  }
 
   return {
-    logSource,
-  };
-};
+    logSource
+  }
+}

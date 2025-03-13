@@ -5,21 +5,20 @@ let commitMsg = readFileSync(commitMsgFilePath, 'utf8').trim()
 
 const typeEmojiMap = {
   feat: '🚀',
-  fix: '🐛', 
-  docs: '📚', 
-  chore: '🛠️', 
-  style: '🎨', 
-  refactor: '♻️', 
-  ci: '⚙️', 
+  fix: '🐛',
+  docs: '📚',
+  chore: '🛠️',
+  style: '🎨',
+  refactor: '♻️',
+  ci: '⚙️',
   test: '🧪',
   revert: '🔙',
-  build: '🏗️', 
+  build: '🏗️',
   hotfix: '🚑',
-  lint: '🧹', 
-  merge: '🔀', 
-  types: '🧰', 
+  lint: '🧹',
+  merge: '🔀',
+  types: '🧰'
 }
-
 
 if (commitMsg.startsWith('Merge')) {
   const newCommitMsg = `${typeEmojiMap.merge} ${commitMsg}`

@@ -11,7 +11,8 @@ export default {
   },
   about: {
     title: 'Sobre Coffee Corner',
-    description: 'En Coffee Corner, creemos que cada momento merece algo especial. Nuestro café no es solo una bebida, es el resultado de una minuciosa selección de los mejores granos y la creación de recetas exclusivas que sorprenden y deleitan a nuestros invitados.'
+    description:
+      'En Coffee Corner, creemos que cada momento merece algo especial. Nuestro café no es solo una bebida, es el resultado de una minuciosa selección de los mejores granos y la creación de recetas exclusivas que sorprenden y deleitan a nuestros invitados.'
   },
   features: {
     title: 'Por Qué Coffee Corner Es Más Que Una Cafetería',
@@ -22,7 +23,8 @@ export default {
       },
       atmosphere: {
         title: 'Ambiente',
-        description: 'Un espacio acogedor donde puedes disfrutar tu bebida favorita mientras trabajas o te reúnes con amigos'
+        description:
+          'Un espacio acogedor donde puedes disfrutar tu bebida favorita mientras trabajas o te reúnes con amigos'
       },
       suppliers: {
         title: 'Proveedores locales',

@@ -20,8 +20,8 @@ export default withNuxt(
       '@typescript-eslint/ban-ts-ignore': 'off',
       '@typescript-eslint/no-empty-object-type': 'warn',
       '@typescript-eslint/no-unused-expressions': 'off',
-      '@typescript-eslint/no-empty-object-type': 'warn',
-      'vue/require-default-prop': 'off'
+      'vue/require-default-prop': 'off',
+      'vue/multi-word-component-names': 'off'
     }
   }
 )
