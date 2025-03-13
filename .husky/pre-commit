@@ -1,0 +1,2 @@
+git update-index --again
+npx nuxi typecheck
